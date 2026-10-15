@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Duckweather · Katie Lee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Caveat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="lamp/lamp.css">
+  <script>
+    // Apply a saved light/dark choice (from the lamp) before the page appears, so it doesn't flash
+    try {
+      const theme = localStorage.getItem("lamp.theme");
+      if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+    } catch {}
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="index.html">
+        <img src="assets/duck-nav.png" alt="" width="120" height="192">
+        <span>katie lee</span>
+      </a>
+
+      <ul class="links">
+        <li><a href="index.html" aria-current="page">work</a></li>
+        <li><a href="#">art</a></li>
+        <li><a href="about.html">about</a></li>
+        <li><a href="#">resume</a></li>
+        <li class="tab-dot" aria-hidden="true"></li>
+      </ul>
+
+      <div class="social">
+        <a href="https://www.linkedin.com/in/katie-lee157/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+            <circle cx="5.5" cy="5" r="2"/>
+            <rect x="3.5" y="9" width="4" height="11" rx="1"/>
+            <path d="M10 9h3.6v1.6c.8-1.2 2-1.9 3.6-1.9 2.6 0 4.3 1.7 4.3 4.9V20h-4v-6.3c0-1.3-.7-2-1.7-2s-1.8.7-1.8 2V20H10z"/>
+          </svg>
+        </a>
+        <a href="mailto:katielee157@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2.5"/>
+            <path d="M3.5 7l8.5 6 8.5-6"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- On-this-page contents: sticks to the left on wide screens -->
+  <nav class="toc" aria-label="On this page">
+    <p class="toc-title">On this page</p>
+    <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#try-it">Try it</a></li>
+        <li><a href="#meet-the-ducks">Meet the ducks</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#final-design">Final design</a></li>
+        <li><a href="#reflection">Reflection</a></li>
+      <li class="toc-dot" aria-hidden="true"></li>
+    </ul>
+  </nav>
+
+  <main class="wrap case">
+    <a class="back" href="index.html#work">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      back to work
+    </a>
+
+    <!-- Title -->
+    <header class="case-head">
+      <div class="case-title">
+        <h1>Duckweather</h1>
+        <ul class="tags">
+          <li>project</li>
+          <li>2026</li>
+        </ul>
+      </div>
+      <p class="lede">Designing a new way to check the weather.</p>
+
+      <div class="case-video">
+        <video id="bragVideo" src="assets/duckweather/brag.mp4?v=2" poster="assets/duckweather/brag-poster.jpg?v=2"
+               autoplay muted loop playsinline preload="auto" width="1920" height="1080"
+               aria-label="Duckweather walkthrough: picking a city, tapping days to see the duck change outfit, and all 21 ducks from 0 to 100 degrees plus rain"></video>
+      </div>
+
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Product Designer<br>Illustrator</dd></div>
+        <div><dt>Timeline</dt><dd>October 2026</dd></div>
+        <div><dt>Tools</dt><dd>Procreate<br>Claude Code</dd></div>
+      </dl>
+    </header>
+
+    <!-- Banner -->
+
+    <!-- Overview -->
+    <section class="case-section" id="overview">
+      <h3 class="label">Overview</h3>
+      <div class="prose">
+        <p class="lead">Duckweather is a web app that makes checking the forecast fun. Instead of standard weather icons, a cast of hand-drawn ducks changes outfit to match the weather in any city.</p>
+      </div>
+      <ul class="stats">
+        <li><strong>21</strong><span>hand-drawn ducks</span></li>
+        <li><strong>5°F</strong><span>between each outfit</span></li>
+        <li><strong>0–100°F</strong><span>plus a rain duck</span></li>
+      </ul>
+      <div class="prose">
+        <p>Every duck was designed and illustrated in Procreate, then brought to life as a working site with Claude Code. Duckweather trades plain numbers and icons for a character with personality, turning an everyday routine into something worth looking forward to.</p>
+      </div>
+    </section>
+
+    <!-- Interactive demo -->
+    <section class="case-section" id="try-it">
+      <h3 class="label">Try it</h3>
+      <div class="demo">
+        <div class="demo-stage">
+          <img id="demoDuck" src="assets/duckweather/ducks/70-75.png" alt="Duck dressed for 70 to 75 degrees">
+        </div>
+        <div class="demo-controls">
+          <p class="demo-temp"><span id="demoTemp">72</span>°</p>
+          <p class="demo-range" id="demoRange">70–75° range</p>
+          <input type="range" id="demoSlider" min="0" max="99" value="72" aria-label="Temperature">
+          <div class="demo-scale" aria-hidden="true"><span>0°</span><span>50°</span><span>100°</span></div>
+          <button type="button" class="demo-rain" id="demoRain" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 15a4 4 0 0 1-.5-8 5.5 5.5 0 0 1 10.6 1.5A3.5 3.5 0 0 1 17 15"/><path d="M9 18l-1 2M13 18l-1 2M17 18l-1 2"/></svg>
+            rain
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- All the ducks -->
+    <section class="case-section" id="meet-the-ducks">
+      <h3 class="label">Meet the ducks</h3>
+      <p class="prose-note">A new outfit for every five degrees, from frozen solid to melting.</p>
+      <div class="duck-grid" id="duckGrid"></div>
+    </section>
+
+    <!-- Process -->
+    <section class="case-section" id="process">
+      <h3 class="label">Process</h3>
+      <div class="prose">
+        <p class="placeholder-text">Sketches, early drafts, and how the ducks and the app took shape.</p>
+      </div>
+      <div class="case-images">
+        <div class="case-image">image coming soon</div>
+        <div class="case-image">image coming soon</div>
+      </div>
+    </section>
+
+    <!-- Final design -->
+    <section class="case-section" id="final-design">
+      <h3 class="label">Final design</h3>
+      <div class="prose">
+        <p class="placeholder-text">Screens of the finished app and the key decisions behind them.</p>
+      </div>
+      <div class="case-image wide">image coming soon</div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="case-section" id="reflection">
+      <h3 class="label">Reflection</h3>
+      <div class="prose">
+        <p class="placeholder-text">What you learned and what you'd do next.</p>
+      </div>
+    </section>
+
+    <a class="back bottom" href="index.html#work">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      back to work
+    </a>
+  </main>
+
+  <script src="nav.js"></script>
+  <script>
+    // ---- On-this-page contents: highlight the section you're reading; the dot glides to it ----
+    (() => {
+      const toc = document.querySelector('.toc');
+      if (!toc) return;
+      const links = [...toc.querySelectorAll('a')];
+      const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+      const dot = toc.querySelector('.toc-dot');
+      let active = null;
+
+      function setActive(i) {
+        if (i === active) return;
+        active = i;
+        links.forEach((a, j) => a.toggleAttribute('aria-current', j === i));
+        const a = links[i];
+        dot.style.transform = `translateY(${a.offsetTop + a.offsetHeight / 2 - 3}px)`;
+        dot.style.opacity = 1;
+      }
+
+      // Start level with the "Overview" heading, then stick near the top while scrolling
+      const STICK_AT = 96;
+      function position() {
+        const overviewLabel = sections[0].querySelector('.label') || sections[0];
+        const firstText = links[0].getBoundingClientRect().top - toc.getBoundingClientRect().top
+                          + parseFloat(getComputedStyle(links[0]).paddingTop);
+        const top = overviewLabel.getBoundingClientRect().top - firstText;
+        toc.style.top = Math.max(STICK_AT, top) + 'px';
+      }
+
+      function update() {
+        position();
+        const line = innerHeight * 0.35;
+        let i = 0;
+        sections.forEach((sec, j) => { if (sec.getBoundingClientRect().top <= line) i = j; });
+        // at the very bottom, the last section counts as current
+        if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) i = sections.length - 1;
+        setActive(i);
+      }
+
+      addEventListener('scroll', update, { passive: true });
+      addEventListener('resize', () => { const i = active; active = null; setActive(i ?? 0); position(); });
+      (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
+        dot.style.transition = 'none';
+        update();
+        requestAnimationFrame(() => { dot.style.transition = ''; });
+      });
+    })();
+  </script>
+  <script>
+    // ---- Project video: plays automatically, muted and looping ----
+    (() => {
+      const video = document.getElementById('bragVideo');
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (reduceMotion) {
+        video.removeAttribute('autoplay');
+        video.pause();
+        video.controls = true;          // no autoplay; normal video controls instead
+        return;
+      }
+      video.play().catch(() => {});
+    })();
+  </script>
+  <script>
+    // ---- Duckweather: temperature slider demo + duck grid ----
+    (() => {
+      const path = f => `assets/duckweather/ducks/${f}.png`;
+      const ranges = Array.from({ length: 20 }, (_, i) => `${i * 5}-${i * 5 + 5}`);
+
+      // Grid of every duck
+      const grid = document.getElementById('duckGrid');
+      [...ranges, 'rain'].forEach(r => {
+        const fig = document.createElement('figure');
+        const label = r === 'rain' ? 'rain' : r.replace('-', '–') + '°';
+        fig.innerHTML = `<img src="${path(r)}" alt="Duck for ${label}" loading="lazy"><figcaption>${label}</figcaption>`;
+        grid.appendChild(fig);
+      });
+
+      // Slider demo
+      const slider = document.getElementById('demoSlider');
+      const duck = document.getElementById('demoDuck');
+      const tempEl = document.getElementById('demoTemp');
+      const rangeEl = document.getElementById('demoRange');
+      const rainBtn = document.getElementById('demoRain');
+      let raining = false;
+      let shown = '70-75';
+
+      function update() {
+        const t = Number(slider.value);
+        const r = ranges[Math.min(19, Math.floor(t / 5))];
+        const key = raining ? 'rain' : r;
+        tempEl.textContent = t;
+        rangeEl.textContent = raining ? 'rainy day' : r.replace('-', '–') + '° range';
+        if (key === shown) return;
+        shown = key;
+        duck.src = path(key);
+        duck.alt = raining ? 'Duck with an umbrella for rain' : `Duck dressed for ${r.replace('-', ' to ')} degrees`;
+        duck.animate(
+          [{ transform: 'scale(0.94) translateY(4px)' }, { transform: 'scale(1.03)' }, { transform: 'none' }],
+          { duration: 260, easing: 'ease-out' }
+        );
+      }
+      slider.addEventListener('input', update);
+      rainBtn.addEventListener('click', () => {
+        raining = !raining;
+        rainBtn.setAttribute('aria-pressed', String(raining));
+        update();
+      });
+
+      // Preload so switching is instant
+      [...ranges, 'rain'].forEach(r => { const i = new Image(); i.src = path(r); });
+    })();
+  </script>
+</body>
+</html>

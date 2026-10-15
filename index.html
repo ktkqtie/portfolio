@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Katie Lee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Caveat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="lamp/lamp.css">
+  <script>
+    // Apply a saved light/dark choice (from the lamp) before the page appears, so it doesn't flash
+    try {
+      const theme = localStorage.getItem("lamp.theme");
+      if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+    } catch {}
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="index.html">
+        <img src="assets/duck-nav.png" alt="" width="120" height="192">
+        <span>katie lee</span>
+      </a>
+
+      <ul class="links">
+        <li><a href="#work" aria-current="page">work</a></li>
+        <li><a href="#">art</a></li>
+        <li><a href="about.html">about</a></li>
+        <li><a href="#">resume</a></li>
+        <li class="tab-dot" aria-hidden="true"></li>
+      </ul>
+
+      <div class="social">
+        <a href="https://www.linkedin.com/in/katie-lee157/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+            <circle cx="5.5" cy="5" r="2"/>
+            <rect x="3.5" y="9" width="4" height="11" rx="1"/>
+            <path d="M10 9h3.6v1.6c.8-1.2 2-1.9 3.6-1.9 2.6 0 4.3 1.7 4.3 4.9V20h-4v-6.3c0-1.3-.7-2-1.7-2s-1.8.7-1.8 2V20H10z"/>
+          </svg>
+        </a>
+        <a href="mailto:katielee157@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2.5"/>
+            <path d="M3.5 7l8.5 6 8.5-6"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero: lamp + waving duck (filler until the interactive piece is ready) -->
+    <section class="hero wrap">
+      <div class="placeholder">
+        <!-- Pull-string lamp (from duckweather): switches the site between light and dark -->
+        <div class="lamp-glow" aria-hidden="true"></div>
+        <button class="lamp" id="lamp" type="button" aria-label="Turn the light off" title="pull the string">
+          <span class="lamp-cord"></span>
+          <svg viewBox="0 0 44 58" aria-hidden="true">
+            <rect class="socket" x="15" y="1" width="14" height="16" rx="3"/>
+            <path class="twine" d="M13.5 4.5Q22 7.5 30.5 4.5M13.5 9Q22 12 30.5 9M13.5 13.5Q22 16.5 30.5 13.5"/>
+            <path class="glass" d="M16 17C16 23 7 27 7 39a15 15 0 0 0 30 0c0-12-9-16-9-22z"/>
+            <path class="filament" d="M18.5 18v13M25.5 18v13M18.5 31h7M18.5 31q-2.5 6 1.2 7.5 1.8-3.5-1.2-7.5M22 31q-1.8 7 0 8 1.8-1 0-8M25.5 31q2.5 6-1.2 7.5-1.8-3.5 1.2-7.5"/>
+          </svg>
+        </button>
+        <div class="duck" id="duck" role="img" aria-label="A yellow duck in blue overalls waving hello" tabindex="0">
+          <div class="shadow" id="duckShadow"></div>
+          <div class="layer rig" id="duckIdleBody">
+            <div class="layer rig" id="duckWaveBody">
+              <!-- Whole arm sits behind the body so the shoulder joint stays tucked under the strap -->
+              <div class="layer shoulder" id="duckIdleShoulder">
+                <div class="layer shoulder" id="duckWaveShoulder">
+                  <img class="layer arm" id="duckWaveArm" src="assets/duck-wave/duck-arm.png" alt="">
+                  <img class="layer" src="assets/duck-wave/duck-sleeve.png" alt="">
+                </div>
+              </div>
+              <img class="layer" src="assets/duck-wave/duck-body.png" alt="">
+              <img class="layer eyes" id="duckEyes" src="assets/duck-wave/duck-eyes.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#work" aria-label="Scroll to projects">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M6 13l6 6 6-6"/>
+        </svg>
+      </a>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects wrap" id="work">
+      <div class="section-head">
+        <h2>Work / <em>Projects</em></h2>
+        <p>A <strong>collection</strong> of my work</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="duckweather.html">
+          <div class="card-frame showcase">
+          <div class="mock">
+            <div class="mock-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+            <img class="shot-day" src="assets/duckweather/app-screenshot-day.jpg" alt="Duckweather app in the daytime: a duck in a cardigan with a blue bow beside 72 degrees and overcast skies in New York, with a six-day forecast and hourly temperature" width="2000" height="1125">
+            <img class="shot-night" src="assets/duckweather/app-screenshot-night.jpg" alt="Duckweather app at night: a duck in a pink jacket and headphones beside 66 degrees and clear skies in New York, with a six-day forecast and hourly temperature" width="2000" height="1127">
+          </div>
+          </div>
+          <div class="card-head">
+            <h3 class="card-title">Duckweather</h3>
+            <ul class="tags">
+              <li>project</li>
+              <li>2026</li>
+            </ul>
+          </div>
+          <p class="card-desc">Designing a new way to check the weather.</p>
+        </a>
+        <a class="card" href="#">
+          <div class="card-frame">image coming soon</div>
+          <h3 class="card-title">Project title</h3>
+          <p class="card-desc">Short description coming soon.</p>
+        </a>
+        <a class="card" href="#">
+          <div class="card-frame">image coming soon</div>
+          <h3 class="card-title">Project title</h3>
+          <p class="card-desc">Short description coming soon.</p>
+        </a>
+        <a class="card" href="#">
+          <div class="card-frame">image coming soon</div>
+          <h3 class="card-title">Project title</h3>
+          <p class="card-desc">Short description coming soon.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+  <script src="nav.js"></script>
+  <script src="lamp/lamp.js"></script>
+
+  <script>
+    // ---- Waving duck ----
+    (() => {
+      const $ = id => document.getElementById(id);
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const sine = 'cubic-bezier(0.37, 0, 0.63, 1)';
+
+      // Idle: gentle breathing + a lazy arm sway, so it's never fully still
+      if (!reduceMotion) {
+        $('duckIdleBody').animate(
+          [{ transform: 'translateY(0) scaleY(1)' }, { transform: 'translateY(-0.6%) scaleY(1.012)' }],
+          { duration: 1800, iterations: Infinity, direction: 'alternate', easing: sine }
+        );
+        $('duckShadow').animate(
+          [{ transform: 'scaleX(1)', opacity: 1 }, { transform: 'scaleX(0.94)', opacity: 0.8 }],
+          { duration: 1800, iterations: Infinity, direction: 'alternate', easing: sine }
+        );
+        $('duckIdleShoulder').animate(
+          [{ transform: 'rotate(0deg)' }, { transform: 'rotate(-2deg)' }],
+          { duration: 2200, iterations: Infinity, direction: 'alternate', easing: sine, delay: 300 }
+        );
+      }
+
+      // Blink
+      function blink() {
+        return $('duckEyes').animate(
+          [{ transform: 'scaleY(1)' }, { transform: 'scaleY(0.08)', offset: 0.45 }, { transform: 'scaleY(1)' }],
+          { duration: 170, easing: 'ease-in-out' }
+        );
+      }
+      function blinkLoop() {
+        setTimeout(() => { blink(); blinkLoop(); }, 2400 + Math.random() * 3200);
+      }
+      if (!reduceMotion) blinkLoop();
+
+      // Wave hello
+      let waving = false;
+      function wave() {
+        if (waving) return;
+        waving = true;
+        const duration = 2400;
+        const lift = 'cubic-bezier(0.3, 0, 0.25, 1.2)';
+
+        // Shoulder: the whole arm (sleeve included) lifts out to the side with a little shrug
+        const shoulder = $('duckWaveShoulder').animate([
+          { transform: 'translateY(0) rotate(0deg)',       offset: 0,    easing: lift },
+          { transform: 'translateY(-1.2%) rotate(-80deg)', offset: 0.22, easing: sine },
+          { transform: 'translateY(-1%) rotate(-74deg)',   offset: 0.36, easing: sine },
+          { transform: 'translateY(-1.2%) rotate(-82deg)', offset: 0.5,  easing: sine },
+          { transform: 'translateY(-1%) rotate(-74deg)',   offset: 0.64, easing: sine },
+          { transform: 'translateY(-1.1%) rotate(-79deg)', offset: 0.76, easing: 'cubic-bezier(0.45, 0, 0.55, 1)' },
+          { transform: 'translateY(0) rotate(3deg)',       offset: 0.94, easing: sine },
+          { transform: 'translateY(0) rotate(0deg)',       offset: 1 }
+        ], { duration });
+
+        // Elbow: the forearm trails the shoulder, bends up toward the head, and does the waving
+        $('duckWaveArm').animate([
+          { transform: 'rotate(0deg)',   offset: 0,    easing: sine },
+          { transform: 'rotate(0deg)',   offset: 0.05, easing: lift },
+          { transform: 'rotate(-72deg)', offset: 0.26, easing: sine },
+          { transform: 'rotate(-42deg)', offset: 0.38, easing: sine },
+          { transform: 'rotate(-78deg)', offset: 0.52, easing: sine },
+          { transform: 'rotate(-44deg)', offset: 0.66, easing: sine },
+          { transform: 'rotate(-66deg)', offset: 0.78, easing: 'cubic-bezier(0.45, 0, 0.55, 1)' },
+          { transform: 'rotate(4deg)',   offset: 0.96, easing: sine },
+          { transform: 'rotate(0deg)',   offset: 1 }
+        ], { duration });
+
+        // Body: tiny dip before lifting, lean into the wave, sway along with it
+        $('duckWaveBody').animate([
+          { transform: 'rotate(0deg) scaleY(1)',        offset: 0,    easing: sine },
+          { transform: 'rotate(0.4deg) scaleY(0.985)',  offset: 0.07, easing: sine },
+          { transform: 'rotate(-2deg) scaleY(1.01)',    offset: 0.22, easing: sine },
+          { transform: 'rotate(-1.3deg) scaleY(1)',     offset: 0.34, easing: sine },
+          { transform: 'rotate(-2.2deg) scaleY(1.005)', offset: 0.46, easing: sine },
+          { transform: 'rotate(-1.3deg) scaleY(1)',     offset: 0.58, easing: sine },
+          { transform: 'rotate(-2deg) scaleY(1.005)',   offset: 0.7,  easing: sine },
+          { transform: 'rotate(0.5deg) scaleY(1)',      offset: 0.93, easing: sine },
+          { transform: 'rotate(0deg) scaleY(1)',        offset: 1 }
+        ], { duration });
+
+        setTimeout(blink, duration * 0.18);
+        shoulder.finished.then(() => { waving = false; });
+      }
+
+      const duck = $('duck');
+      duck.addEventListener('click', wave);
+      duck.addEventListener('mouseenter', wave);
+      duck.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); wave(); } });
+
+      // Say hi once when the page opens
+      if (!reduceMotion) {
+        Promise.all([...duck.querySelectorAll('img')].map(img => img.decode().catch(() => {})))
+          .then(() => setTimeout(wave, 500));
+      }
+    })();
+  </script>
+</body>
+</html>

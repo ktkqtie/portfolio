@@ -1,0 +1,15 @@
+# Only the website itself is published. Everything else in this folder
+# (raw project files, original artwork, personal photos) stays private.
+/*
+!/.gitignore
+!/.nojekyll
+!/CNAME
+!/index.html
+!/about.html
+!/duckweather.html
+!/styles.css
+!/nav.js
+!/lamp/
+!/assets/
+
+.DS_Store

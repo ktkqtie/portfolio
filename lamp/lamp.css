@@ -1,0 +1,143 @@
+/* Hanging lamp — pull the string to switch the page between light and dark.
+   Saved from duckweather exactly as it looked there. Lit in light mode, off in dark mode.
+   Needs lamp.js. See README.md for how to add it to a page. */
+
+/* ---------- colors (duckweather's palette) ---------- */
+:root {
+  --lamp-cord: #6e5c4e;
+  --lamp-ink: #33261d;
+  --lamp-socket: #f3e9da;
+  --lamp-focus: #cf6a40;
+  --lamp-glass: #ffe6a6;
+  --lamp-filament: #c9772b;
+  --lamp-bulb-glow: drop-shadow(0 0 10px rgba(255, 190, 95, 0.75));
+  --lamp-room-glow: 1;
+}
+
+/* Lamp off: when the string was pulled (data-theme="dark" on <html>), or when the
+   OS prefers dark and nobody has pulled it yet. Keep the two blocks identical. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --lamp-cord: #c8b6a3;
+    --lamp-ink: #f3e8da;
+    --lamp-socket: #30271f;
+    --lamp-focus: #e58a5e;
+    --lamp-glass: rgba(255, 240, 220, 0.06);
+    --lamp-filament: #8d7a69;
+    --lamp-bulb-glow: drop-shadow(0 0 0 transparent);
+    --lamp-room-glow: 0;
+  }
+}
+:root[data-theme="dark"] {
+  --lamp-cord: #c8b6a3;
+  --lamp-ink: #f3e8da;
+  --lamp-socket: #30271f;
+  --lamp-focus: #e58a5e;
+  --lamp-glass: rgba(255, 240, 220, 0.06);
+  --lamp-filament: #8d7a69;
+  --lamp-bulb-glow: drop-shadow(0 0 0 transparent);
+  --lamp-room-glow: 0;
+}
+
+/* ---------- theme switch ---------- */
+/* Switching cross-fades the whole page as one picture, so text never fades out of
+   step with its background. The lamp is left out of the fade: it stays live, so its
+   pull animation plays smoothly and the bulb switches on/off instantly like a real one. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+}
+::view-transition-group(lamp),
+::view-transition-new(lamp) { animation: none; }
+::view-transition-old(lamp) { display: none; }
+
+/* ---------- the lamp ---------- */
+/* Hangs from the top of its nearest positioned ancestor, centered. */
+.lamp {
+  --cord: 44px;
+  position: absolute;
+  top: 0;
+  left: calc(50% - 22px);
+  width: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  z-index: 3;
+  transform-origin: 50% 0;
+  animation: lamp-sway 7s ease-in-out infinite;
+  view-transition-name: lamp;
+  -webkit-tap-highlight-color: transparent;
+}
+.lamp-cord {
+  width: 2px;
+  height: var(--cord);
+  background: var(--lamp-cord);
+  border-radius: 1px;
+  transition: height 0.2s ease;
+}
+.lamp:hover .lamp-cord { height: calc(var(--cord) + 4px); }
+.lamp svg {
+  width: 44px;
+  height: 58px;
+  overflow: visible;
+  stroke: var(--lamp-ink);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: var(--lamp-bulb-glow);
+}
+.lamp .socket { fill: var(--lamp-socket); }
+.lamp .twine { fill: none; stroke-width: 1.5; }
+.lamp .glass { fill: var(--lamp-glass); }
+.lamp .filament { fill: none; stroke: var(--lamp-filament); stroke-width: 1.4; }
+.lamp:focus-visible { outline: none; }
+.lamp:focus-visible svg { outline: 2px solid var(--lamp-focus); outline-offset: 4px; border-radius: 12px; }
+.lamp.tug { animation: lamp-tug 0.9s cubic-bezier(0.3, 1.4, 0.5, 1); }
+/* the cord stretches on a pull, so its top stays pinned to the ceiling */
+.lamp.tug .lamp-cord { animation: lamp-cord-tug 0.9s cubic-bezier(0.3, 1.4, 0.5, 1); }
+
+/* warm light spilling from the bulb (fades out when the lamp is off) */
+.lamp-glow {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  width: min(680px, 100vw);
+  height: 560px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgba(255, 200, 120, 0.4), rgba(255, 200, 120, 0.12) 55%, transparent);
+  opacity: var(--lamp-room-glow);
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes lamp-sway { 0%, 100% { transform: rotate(1.2deg); } 50% { transform: rotate(-1.2deg); } }
+@keyframes lamp-tug {
+  0%, 22% { transform: rotate(0); }
+  45% { transform: rotate(5deg); }
+  65% { transform: rotate(-3.5deg); }
+  82% { transform: rotate(1.5deg); }
+  100% { transform: rotate(0); }
+}
+@keyframes lamp-cord-tug {
+  0% { height: var(--cord); }
+  22% { height: calc(var(--cord) + 12px); }
+  45% { height: calc(var(--cord) - 3px); }
+  100% { height: var(--cord); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lamp, .lamp * { animation: none !important; transition: none !important; }
+}
+
+/* On duckweather's phone layout the cord was longer (58px) and the bulb smaller, so it
+   hung below the top bar between the logo and the buttons:
+   @media (max-width: 760px) {
+     .lamp { --cord: 58px; left: calc(50% - 17px); width: 34px; }
+     .lamp svg { width: 34px; height: 45px; }
+     .lamp-glow { top: 82px; }
+   } */

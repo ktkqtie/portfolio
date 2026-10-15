@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About · Katie Lee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Caveat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="lamp/lamp.css">
+  <script>
+    // Apply a saved light/dark choice (from the lamp) before the page appears, so it doesn't flash
+    try {
+      const theme = localStorage.getItem("lamp.theme");
+      if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+    } catch {}
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="index.html">
+        <img src="assets/duck-nav.png" alt="" width="120" height="192">
+        <span>katie lee</span>
+      </a>
+
+      <ul class="links">
+        <li><a href="index.html">work</a></li>
+        <li><a href="#">art</a></li>
+        <li><a href="about.html" aria-current="page">about</a></li>
+        <li><a href="#">resume</a></li>
+        <li class="tab-dot" aria-hidden="true"></li>
+      </ul>
+
+      <div class="social">
+        <a href="https://www.linkedin.com/in/katie-lee157/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+            <circle cx="5.5" cy="5" r="2"/>
+            <rect x="3.5" y="9" width="4" height="11" rx="1"/>
+            <path d="M10 9h3.6v1.6c.8-1.2 2-1.9 3.6-1.9 2.6 0 4.3 1.7 4.3 4.9V20h-4v-6.3c0-1.3-.7-2-1.7-2s-1.8.7-1.8 2V20H10z"/>
+          </svg>
+        </a>
+        <a href="mailto:katielee157@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2.5"/>
+            <path d="M3.5 7l8.5 6 8.5-6"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="wrap about-page">
+      <div class="section-head">
+        <h2>About / <em>Me</em></h2>
+      </div>
+      <section class="about" id="about">
+      <div class="bio">
+        <h1>hi, i'm <span class="hand">katie</span></h1>
+        <p>Bio coming soon. A few lines about who you are, what you love to design, and what you're working on right now.</p>
+        <p>A second short paragraph can cover your background, what you're studying, or what you do when you're not designing.</p>
+      </div>
+      <div class="photo">photo coming soon</div>
+    </section>
+    </div>
+  </main>
+
+  <script src="nav.js"></script>
+</body>
+</html>
