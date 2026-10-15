@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Night to Remember · Katie Lee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Caveat:wght@500&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="lamp/lamp.css">
+  <script>
+    // Apply a saved light/dark choice (from the lamp) before the page appears, so it doesn't flash
+    try {
+      const theme = localStorage.getItem("lamp.theme");
+      if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+    } catch {}
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="index.html">
+        <img src="assets/duck-nav.png" alt="" width="120" height="192">
+        <span>katie lee</span>
+      </a>
+
+      <ul class="links">
+        <li><a href="index.html" aria-current="page">work</a></li>
+        <li><a href="art.html">art</a></li>
+        <li><a href="about.html">about</a></li>
+        <li><a href="#">resume</a></li>
+        <li class="tab-dot" aria-hidden="true"></li>
+      </ul>
+
+      <div class="social">
+        <a href="https://www.linkedin.com/in/katie-lee157/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+            <circle cx="5.5" cy="5" r="2"/>
+            <rect x="3.5" y="9" width="4" height="11" rx="1"/>
+            <path d="M10 9h3.6v1.6c.8-1.2 2-1.9 3.6-1.9 2.6 0 4.3 1.7 4.3 4.9V20h-4v-6.3c0-1.3-.7-2-1.7-2s-1.8.7-1.8 2V20H10z"/>
+          </svg>
+        </a>
+        <a href="mailto:katielee157@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2.5"/>
+            <path d="M3.5 7l8.5 6 8.5-6"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- On-this-page contents: sticks to the left on wide screens -->
+  <nav class="toc" aria-label="On this page">
+    <p class="toc-title">On this page</p>
+    <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#problem">The problem</a></li>
+        <li><a href="#brand">Brand identity</a></li>
+        <li><a href="#print">Print</a></li>
+        <li><a href="#photobooth">Photobooth</a></li>
+        <li><a href="#stickers">Stickers</a></li>
+        <li><a href="#social">Social media</a></li>
+        <li><a href="#reflection">Reflection</a></li>
+      <li class="toc-dot" aria-hidden="true"></li>
+    </ul>
+  </nav>
+
+  <main class="wrap case">
+    <a class="back" href="index.html#work">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      back to work
+    </a>
+
+    <!-- Title -->
+    <header class="case-head">
+      <div class="case-title">
+        <h1>A Night to Remember</h1>
+        <ul class="tags">
+          <li>team project</li>
+          <li>2026</li>
+        </ul>
+      </div>
+      <p class="lede">An alcohol awareness campaign for college students.</p>
+
+      <figure class="case-hero">
+        <img src="assets/night/hero.jpg" alt="The campaign flyer lying on pavement in dappled shade: The best nights are the ones you remember" width="2000" height="1500">
+      </figure>
+
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Graphic Designer<br>Print collateral</dd></div>
+        <div><dt>Timeline</dt><dd>May – June 2026</dd></div>
+        <div><dt>Tools</dt><dd>InDesign<br>Illustrator<br>Photoshop</dd></div>
+      </dl>
+    </header>
+
+    <!-- Overview -->
+    <section class="case-section" id="overview">
+      <h3 class="label">Overview</h3>
+      <div class="prose">
+        <p class="lead">A Night to Remember challenges the belief that drinking is necessary to have fun or fit in. Through positive, relatable messaging and engaging experiences, the campaign promotes real connection and healthier choices.</p>
+      </div>
+      <ul class="stats">
+        <li><strong>4</strong><span>designers</span></li>
+        <li><strong>5</strong><span>campaign pieces</span></li>
+        <li><strong>3</strong><span>print, physical &amp; digital</span></li>
+      </ul>
+      <div class="prose">
+        <p>Each member of a four-person team owned one part of the campaign: print, a 3D photobooth activation, stickers, or social media. Every piece shares one nightlife-inspired identity, so the campaign reads as a single voice on a poster, at an event, or in a feed.</p>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="case-section" id="team">
+      <h3 class="label">Team</h3>
+      <ul class="team">
+        <li class="is-me"><strong>Katie Lee</strong><span>2D print collateral</span></li>
+        <li><strong>Sara Coughlin</strong><span>3D photobooth</span></li>
+        <li><strong>Sasha Tanguay</strong><span>Brand collateral: stickers</span></li>
+        <li><strong>Aishwarya Venkateshwaran</strong><span>Social media</span></li>
+      </ul>
+    </section>
+
+    <!-- Problem -->
+    <section class="case-section" id="problem">
+      <h3 class="label">The problem</h3>
+      <div class="prose">
+        <p class="pull">25% of full-time college students ages 18–25 reported heavy drinking in the past month.</p>
+        <p>Alcohol abuse is widespread among college students and often normalized within campus culture. While it's seen as harmless fun, excessive drinking can lead to poor decision-making, health risks, academic challenges and long-term substance abuse.</p>
+        <p class="source">Source: 2024 National Survey on Drug Use and Health (NSDUH)</p>
+      </div>
+    </section>
+
+    <!-- Brand identity -->
+    <section class="case-section" id="brand">
+      <h3 class="label">Brand identity</h3>
+      <div class="prose">
+        <p>The visual language was designed to feel like a night out: energetic, engaging and far from serious. Midnight blues and charcoal set the scene, lit up by a vibrant gold. Instead of a traditional corporate pairing, Poppins Semibold is combined with the handwritten Gladiola script, making the brand feel welcoming and full of life.</p>
+      </div>
+      <div class="type-color">
+        <div class="type-list">
+          <p class="mini-label">Type</p>
+          <div class="type-sample"><span class="poppins">Real memories don't need chasers.</span><small>Poppins Semibold · headlines &amp; body</small></div>
+          <figure class="type-sample script">
+            <img src="assets/night/font-gladiola.png" alt="Gladiola script sample" loading="lazy" width="400" height="375">
+            <figcaption>Gladiola · accents</figcaption>
+          </figure>
+        </div>
+        <div class="palette-wrap">
+          <p class="mini-label">Colour</p>
+          <ul class="palette five">
+            <li style="--c:#faefd4"><span>#FAEFD4</span></li>
+            <li style="--c:#dcaa3c"><span>#DCAA3C</span></li>
+            <li style="--c:#385080" class="on-dark"><span>#385080</span></li>
+            <li style="--c:#3e406f" class="on-dark"><span>#3E406F</span></li>
+            <li style="--c:#323432" class="on-dark"><span>#323432</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Print (Katie) -->
+    <section class="case-section" id="print">
+      <h3 class="label">Print</h3>
+      <div class="split">
+        <figure class="frame tall">
+          <img src="assets/night/poster.jpg" alt="Campaign poster: The best nights are the ones you remember. Real memories don't need chasers. 32% of college students who drink experience at least 1 alcohol-induced memory blackout within a year." loading="lazy" width="1400" height="1979">
+        </figure>
+        <div class="prose">
+          <p class="mini-label">Designed by Katie Lee</p>
+          <p>The poster delivers an important message about alcohol safety without feeling rigid or preachy. Deep blues and energetic pops of gold capture an authentic late-night atmosphere.</p>
+          <p>A clean, structured sans serif paired with a playful handwritten script keeps the tone approachable for a college audience, while the statistic and call to action stay easy to read. A QR code links students to sober-friendly ideas and events on campus.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photobooth (Sara) -->
+    <section class="case-section" id="photobooth">
+      <h3 class="label">Photobooth</h3>
+      <div class="prose">
+        <p class="mini-label">Designed by Sara Coughlin</p>
+        <p>The Memory Booth takes the campaign beyond print as an interactive activation. Photobooths naturally draw a crowd at high-energy events; wrapped in the nightlife aesthetic with messaging like "More memories, fewer drinks," the booth delivers the message in a fun, non-intrusive way. Students leave with a keepsake that reinforces the idea that real connections don't require alcohol.</p>
+      </div>
+      <div class="booth">
+        <figure class="frame booth-main"><img src="assets/night/booth-4.png" alt="The Memory Booth photobooth mockup in navy and cream with gold stars" loading="lazy" width="900" height="1291"></figure>
+        <figure class="frame"><img src="assets/night/booth-2.jpg" alt="Booth side panel: The best nights are the ones you remember" loading="lazy" width="836" height="1654"></figure>
+        <figure class="frame"><img src="assets/night/booth-1.jpg" alt="Booth front panel with curtain: The Memory Booth, step in, snap a pic, share a memory" loading="lazy" width="836" height="1654"></figure>
+        <figure class="frame"><img src="assets/night/booth-3.jpg" alt="Example photo strip from the booth" loading="lazy" width="506" height="1628"></figure>
+      </div>
+    </section>
+
+    <!-- Stickers (Sasha) -->
+    <section class="case-section" id="stickers">
+      <h3 class="label">Stickers</h3>
+      <div class="prose">
+        <p class="mini-label">Designed by Sasha Tanguay</p>
+        <p>A set of stickers gives the campaign a lasting physical presence. Scenes of crowds and late-night hangouts in the blue and gold palette feel like authentic nightlife merch, and conversational copy keeps the message relatable rather than restrictive, turning an educational campaign into something students want to share.</p>
+      </div>
+      <ul class="slides three">
+        <li><img src="assets/night/sticker-1.jpg" alt="Sticker: Less hangover, more hang out" loading="lazy" width="674" height="836"></li>
+        <li><img src="assets/night/sticker-2.jpg" alt="Sticker: Last night is a movie only when you can remember it" loading="lazy" width="680" height="840"></li>
+        <li><img src="assets/night/sticker-3.jpg" alt="Sticker: Forgetting your ID isn't the end of the world" loading="lazy" width="682" height="850"></li>
+      </ul>
+      <figure class="frame">
+        <img src="assets/night/sticker-mockup.jpg" alt="Two campaign stickers on a laptop lid" loading="lazy" width="1800" height="1014">
+      </figure>
+    </section>
+
+    <!-- Social (Aishwarya) -->
+    <section class="case-section" id="social">
+      <h3 class="label">Social media</h3>
+      <div class="prose">
+        <p class="mini-label">Designed by Aishwarya Venkateshwaran</p>
+        <p>An Instagram carousel translates the campaign into a digital space. It balances the reality of campus binge drinking with a positive, actionable tone, offering realistic alternatives to alcohol-centric plans, while the shared blue and gold palette keeps the brand recognizable across every medium.</p>
+      </div>
+      <ul class="slides three">
+        <li><img src="assets/night/social-1.jpg" alt="Instagram post: Make memories you'll actually remember" loading="lazy" width="654" height="1492"></li>
+        <li><img src="assets/night/social-2.jpg" alt="Instagram post listing alcohol-free activities: the plan does not need alcohol to be fun" loading="lazy" width="660" height="1492"></li>
+        <li><img src="assets/night/social-3.jpg" alt="Instagram post: 25% of full-time college students reported heavy drinking in the last month" loading="lazy" width="654" height="1486"></li>
+      </ul>
+    </section>
+
+    <!-- Reflection -->
+    <section class="case-section" id="reflection">
+      <h3 class="label">Reflection</h3>
+      <div class="prose">
+        <p class="placeholder-text">What working on a team taught you, how the shared identity came together, and what you'd push further next time.</p>
+      </div>
+    </section>
+
+    <a class="back bottom" href="index.html#work">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      back to work
+    </a>
+  </main>
+
+  <script src="nav.js"></script>
+  <script>
+    // ---- On-this-page contents: highlight the section you're reading; the dot glides to it ----
+    (() => {
+      const toc = document.querySelector('.toc');
+      if (!toc) return;
+      const links = [...toc.querySelectorAll('a')];
+      const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+      const dot = toc.querySelector('.toc-dot');
+      let active = null;
+
+      function setActive(i) {
+        if (i === active) return;
+        active = i;
+        links.forEach((a, j) => a.toggleAttribute('aria-current', j === i));
+        const a = links[i];
+        dot.style.transform = `translateY(${a.offsetTop + a.offsetHeight / 2 - 3}px)`;
+        dot.style.opacity = 1;
+      }
+
+      // Start level with the "Overview" heading, then stick near the top while scrolling
+      const STICK_AT = 96;
+      function position() {
+        const overviewLabel = sections[0].querySelector('.label') || sections[0];
+        const firstText = links[0].getBoundingClientRect().top - toc.getBoundingClientRect().top
+                          + parseFloat(getComputedStyle(links[0]).paddingTop);
+        const top = overviewLabel.getBoundingClientRect().top - firstText;
+        toc.style.top = Math.max(STICK_AT, top) + 'px';
+      }
+
+      function update() {
+        position();
+        const line = innerHeight * 0.35;
+        let i = 0;
+        sections.forEach((sec, j) => { if (sec.getBoundingClientRect().top <= line) i = j; });
+        // at the very bottom, the last section counts as current
+        if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) i = sections.length - 1;
+        setActive(i);
+      }
+
+      addEventListener('scroll', update, { passive: true });
+      addEventListener('resize', () => { const i = active; active = null; setActive(i ?? 0); position(); });
+      (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
+        dot.style.transition = 'none';
+        update();
+        requestAnimationFrame(() => { dot.style.transition = ''; });
+      });
+    })();
+  </script>
+</body>
+</html>

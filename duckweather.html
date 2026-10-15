@@ -27,7 +27,7 @@
 
       <ul class="links">
         <li><a href="index.html" aria-current="page">work</a></li>
-        <li><a href="#">art</a></li>
+        <li><a href="art.html">art</a></li>
         <li><a href="about.html">about</a></li>
         <li><a href="#">resume</a></li>
         <li class="tab-dot" aria-hidden="true"></li>
@@ -56,9 +56,9 @@
     <p class="toc-title">On this page</p>
     <ul>
         <li><a href="#overview">Overview</a></li>
-        <li><a href="#try-it">Try it</a></li>
-        <li><a href="#meet-the-ducks">Meet the ducks</a></li>
+        <li><a href="#concept">Concept</a></li>
         <li><a href="#process">Process</a></li>
+        <li><a href="#meet-the-ducks">Meet the ducks</a></li>
         <li><a href="#final-design">Final design</a></li>
         <li><a href="#reflection">Reflection</a></li>
       <li class="toc-dot" aria-hidden="true"></li>
@@ -74,7 +74,9 @@
     <!-- Title -->
     <header class="case-head">
       <div class="case-title">
-        <h1>Duckweather</h1>
+        <h1>Duckweather
+          <a class="visit" href="https://ktkqtie.github.io/duckweather/" target="_blank" rel="noopener" aria-label="Visit the Duckweather site" title="Visit the site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </h1>
         <ul class="tags">
           <li>project</li>
           <li>2026</li>
@@ -109,21 +111,17 @@
         <li><strong>0–100°F</strong><span>plus a rain duck</span></li>
       </ul>
       <div class="prose">
-        <p>Every duck was designed and illustrated in Procreate, then brought to life as a working site with Claude Code. Duckweather trades plain numbers and icons for a character with personality, turning an everyday routine into something worth looking forward to.</p>
+        <p>Each duck was designed and illustrated in Procreate, then brought to life as a working site with Claude Code. Duckweather trades plain numbers and icons for a character with personality, turning an everyday routine into something worth looking forward to.</p>
       </div>
-    </section>
-
-    <!-- Interactive demo -->
-    <section class="case-section" id="try-it">
-      <h3 class="label">Try it</h3>
+      <!-- Interactive demo: drag the temperature to see the duck change -->
       <div class="demo">
         <div class="demo-stage">
-          <img id="demoDuck" src="assets/duckweather/ducks/70-75.png" alt="Duck dressed for 70 to 75 degrees">
+          <img id="demoDuck" src="assets/duckweather/ducks/0-5.png" alt="Duck dressed for 0 to 5 degrees">
         </div>
         <div class="demo-controls">
-          <p class="demo-temp"><span id="demoTemp">72</span>°</p>
-          <p class="demo-range" id="demoRange">70–75° range</p>
-          <input type="range" id="demoSlider" min="0" max="99" value="72" aria-label="Temperature">
+          <p class="demo-temp"><span id="demoTemp">0</span>°</p>
+          <p class="demo-range" id="demoRange">0–5° range</p>
+          <input type="range" id="demoSlider" min="0" max="99" value="0" aria-label="Temperature">
           <div class="demo-scale" aria-hidden="true"><span>0°</span><span>50°</span><span>100°</span></div>
           <button type="button" class="demo-rain" id="demoRain" aria-pressed="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 15a4 4 0 0 1-.5-8 5.5 5.5 0 0 1 10.6 1.5A3.5 3.5 0 0 1 17 15"/><path d="M9 18l-1 2M13 18l-1 2M17 18l-1 2"/></svg>
@@ -133,11 +131,31 @@
       </div>
     </section>
 
-    <!-- All the ducks -->
-    <section class="case-section" id="meet-the-ducks">
-      <h3 class="label">Meet the ducks</h3>
-      <p class="prose-note">A new outfit for every five degrees, from frozen solid to melting.</p>
-      <div class="duck-grid" id="duckGrid"></div>
+    <!-- Concept -->
+    <section class="case-section" id="concept">
+      <h3 class="label">Concept</h3>
+      <div class="split">
+        <figure class="frame sketch">
+          <img src="assets/duckweather/sketch-layout.png?v=2" alt="Hand-drawn layout sketch: a duck saying wear a hoodie beside 57 degrees in New York, with a six-day forecast, hourly temperature chart, air quality, wind and UV cards" loading="lazy" width="900" height="1181">
+          <figcaption>Initial layout sketch · Procreate</figcaption>
+        </figure>
+        <div class="prose">
+          <p>The layout began as a quick sketch in Procreate. The duck and the temperature share the top of the page, so the outfit and the number are read together at a glance.</p>
+          <p>Supporting details sit below in simple cards: a six-day forecast, an hourly temperature chart, then air quality, wind and UV. Much of this structure carried straight through to the final design.</p>
+          <p>An early idea included the duck with speech bubbles and little encouragements. The final design drops these to focus on the duck and its outfits.</p>
+        </div>
+      </div>
+
+      <!-- Base duck -->
+      <div class="base-duck">
+        <figure class="frame sketch base">
+          <img src="assets/duckweather/base-duck.png" alt="Line drawing of the plain base duck with no outfit" loading="lazy" width="600" height="950">
+          <figcaption>Base duck</figcaption>
+        </figure>
+        <div class="prose">
+          <p>Every duck is drawn over the same base character. Starting from one shared shape keeps the proportions, face and personality consistent, so only the outfit changes from one temperature to the next.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Process -->
@@ -150,6 +168,13 @@
         <div class="case-image">image coming soon</div>
         <div class="case-image">image coming soon</div>
       </div>
+    </section>
+
+    <!-- All the ducks -->
+    <section class="case-section" id="meet-the-ducks">
+      <h3 class="label">Meet the ducks</h3>
+      <p class="prose-note">A new outfit for every five degrees, from frozen solid to melting.</p>
+      <div class="duck-grid" id="duckGrid"></div>
     </section>
 
     <!-- Final design -->
@@ -261,7 +286,7 @@
       const rangeEl = document.getElementById('demoRange');
       const rainBtn = document.getElementById('demoRain');
       let raining = false;
-      let shown = '70-75';
+      let shown = '0-5';
 
       function update() {
         const t = Number(slider.value);

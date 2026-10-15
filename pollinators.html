@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Protect Pollinators · Katie Lee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Caveat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="lamp/lamp.css">
+  <script>
+    // Apply a saved light/dark choice (from the lamp) before the page appears, so it doesn't flash
+    try {
+      const theme = localStorage.getItem("lamp.theme");
+      if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+    } catch {}
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="index.html">
+        <img src="assets/duck-nav.png" alt="" width="120" height="192">
+        <span>katie lee</span>
+      </a>
+
+      <ul class="links">
+        <li><a href="index.html" aria-current="page">work</a></li>
+        <li><a href="art.html">art</a></li>
+        <li><a href="about.html">about</a></li>
+        <li><a href="#">resume</a></li>
+        <li class="tab-dot" aria-hidden="true"></li>
+      </ul>
+
+      <div class="social">
+        <a href="https://www.linkedin.com/in/katie-lee157/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+            <circle cx="5.5" cy="5" r="2"/>
+            <rect x="3.5" y="9" width="4" height="11" rx="1"/>
+            <path d="M10 9h3.6v1.6c.8-1.2 2-1.9 3.6-1.9 2.6 0 4.3 1.7 4.3 4.9V20h-4v-6.3c0-1.3-.7-2-1.7-2s-1.8.7-1.8 2V20H10z"/>
+          </svg>
+        </a>
+        <a href="mailto:katielee157@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2.5"/>
+            <path d="M3.5 7l8.5 6 8.5-6"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- On-this-page contents: sticks to the left on wide screens -->
+  <nav class="toc" aria-label="On this page">
+    <p class="toc-title">On this page</p>
+    <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#problem">The problem</a></li>
+        <li><a href="#strategy">Strategy</a></li>
+        <li><a href="#inspiration">Inspiration</a></li>
+        <li><a href="#poster">Poster</a></li>
+        <li><a href="#seed-packets">Seed packets</a></li>
+        <li><a href="#carousel">Carousel</a></li>
+        <li><a href="#reflection">Reflection</a></li>
+      <li class="toc-dot" aria-hidden="true"></li>
+    </ul>
+  </nav>
+
+  <main class="wrap case">
+    <a class="back" href="index.html#work">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      back to work
+    </a>
+
+    <!-- Title -->
+    <header class="case-head">
+      <div class="case-title">
+        <h1>Protect Pollinators</h1>
+        <ul class="tags">
+          <li>class project</li>
+          <li>2026</li>
+        </ul>
+      </div>
+      <p class="lede">A campaign to help communities plant native and protect pollinators.</p>
+
+      <figure class="case-hero">
+        <img src="assets/pollinators/hero.jpg" alt="Regional Roots Pollinator Mix seed packets for blue aster, wild bergamot, wreath goldenrod and gray-headed coneflower, arranged in a grid" width="2000" height="1500">
+      </figure>
+
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Graphic Designer</dd></div>
+        <div><dt>Timeline</dt><dd>Summer 2026</dd></div>
+        <div><dt>Tools</dt><dd>InDesign<br>Photoshop<br>Procreate</dd></div>
+      </dl>
+    </header>
+
+    <!-- Overview -->
+    <section class="case-section" id="overview">
+      <h3 class="label">Overview</h3>
+      <div class="prose">
+        <p class="lead">Protect Pollinators is a three-part awareness campaign that encourages communities to plant native and support the bees and butterflies their ecosystems depend on.</p>
+      </div>
+      <ul class="stats">
+        <li><strong>3</strong><span>print, packaging &amp; social</span></li>
+        <li><strong>4</strong><span>native Northeast flowers</span></li>
+        <li><strong>22%</strong><span>of native pollinators at risk</span></li>
+      </ul>
+      <div class="prose">
+        <p>Created for ARTG 3452, the campaign pairs an informational poster with a line of Regional Roots seed packets and an Instagram carousel. Each piece leads to the next: learn why pollinators matter, then plant something that helps.</p>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="case-section" id="problem">
+      <h3 class="label">The problem</h3>
+      <div class="prose">
+        <p class="pull">Pollinator populations are declining, and most people don't know how simple it is to help.</p>
+        <p>Habitat loss, pesticide use and suburban development are shrinking pollinator populations. Many people are unaware of how pollinators contribute to the ecosystem and to food production, or how small actions, like choosing native plants, can protect them.</p>
+      </div>
+      <div class="audience">
+        <p class="mini-label">Audience</p>
+        <p>Young adults, students, suburban residents and environmentally conscious community members who want to make a difference close to home.</p>
+      </div>
+    </section>
+
+    <!-- Strategy -->
+    <section class="case-section" id="strategy">
+      <h3 class="label">Strategy</h3>
+      <div class="prose">
+        <p>One message across three formats, each with its own job.</p>
+      </div>
+      <ol class="pillars">
+        <li><span class="mini-label">2D · Print</span><strong>Poster</strong><p>Eye-catching and informational: introduce native flowers and why they matter.</p></li>
+        <li><span class="mini-label">3D · Packaging</span><strong>Seed packets</strong><p>A branded product that turns awareness into action, with cardboard tones and a paper texture.</p></li>
+        <li><span class="mini-label">Screen · Social</span><strong>Carousel</strong><p>An engaging Instagram post that ties every deliverable together and points to the seeds.</p></li>
+      </ol>
+    </section>
+
+    <!-- Inspiration -->
+    <section class="case-section" id="inspiration">
+      <h3 class="label">Inspiration</h3>
+      <div class="prose">
+        <p>Botanical posters from the Pollinator Partnership set the direction: floral patterns, organic typography, illustrated bees, butterflies and plants, and soft colour palettes.</p>
+      </div>
+      <figure class="frame">
+        <img src="assets/pollinators/moodboard.jpg" alt="Mood board of botanical pollinator posters, including Wings of Life and Pollinators Weave Connections" loading="lazy" width="1600" height="901">
+        <figcaption>Mood board · posters from the Pollinator Partnership</figcaption>
+      </figure>
+
+      <div class="type-color">
+        <div class="type-list">
+          <p class="mini-label">Type</p>
+          <figure class="type-sample sigurd">
+            <img src="assets/pollinators/headline.jpg" alt="Protect Pollinators headline set in Sigurd Semibold" loading="lazy" width="1051" height="400">
+            <figcaption>Sigurd Semibold · headlines</figcaption>
+          </figure>
+          <div class="type-sample"><span class="futura">Our ecosystem depends on them.</span><small>Futura PT Medium · subheads</small></div>
+          <div class="type-sample"><span class="georgia">Wild bergamot, Monarda fistulosa</span><small>Georgia Regular · body &amp; labels</small></div>
+        </div>
+        <div class="palette-wrap">
+          <p class="mini-label">Colour</p>
+          <ul class="palette">
+            <li style="--c:#e4efcd"><span>#E4EFCD</span></li>
+            <li style="--c:#c2de81"><span>#C2DE81</span></li>
+            <li style="--c:#849b54"><span>#849B54</span></li>
+            <li style="--c:#a6a0ae"><span>#A6A0AE</span></li>
+            <li style="--c:#88abd7"><span>#88ABD7</span></li>
+            <li style="--c:#d2cb28"><span>#D2CB28</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Poster -->
+    <section class="case-section" id="poster">
+      <h3 class="label">Poster</h3>
+      <div class="split">
+        <figure class="frame tall">
+          <img src="assets/pollinators/poster-final.jpg" alt="Final Protect Pollinators poster: native Northeast flowers including blue aster, wild bergamot and coneflower, with labels and a Northeast region map" loading="lazy" width="1400" height="2164">
+        </figure>
+        <div class="prose">
+          <p class="mini-label">Final</p>
+          <p>The final poster narrows in on the Northeast's native flowers. The headline grows larger and bolder so it shares the spotlight with the bouquet, while the flowers shrink to give the layout room to breathe.</p>
+          <p>Each flower is named with its average height, and a region map ties the poster to a specific place, so the message feels local and actionable.</p>
+        </div>
+      </div>
+
+      <p class="mini-label steps-title">How it got there</p>
+      <ol class="steps">
+        <li><figure><img src="assets/pollinators/poster-sketch.jpg" alt="Rough Procreate sketch titled Bee the Change" loading="lazy"></figure><span class="step-n">Sketch</span><p>A rough Procreate sketch set the tone, aiming for aesthetic first and informational second.</p></li>
+        <li><figure><img src="assets/pollinators/poster-draft1.jpg" alt="First draft of the poster with a bouquet of named native flowers" loading="lazy"></figure><span class="step-n">Draft 1</span><p>In InDesign, illustrations were arranged like a bouquet, each flower named, with a headline and calls to action.</p></li>
+        <li><figure><img src="assets/pollinators/poster-draft2.jpg" alt="Second draft of the poster with a larger headline and a Northeast region map" loading="lazy"></figure><span class="step-n">Draft 2</span><p>After critique: regional versions, a larger headline, and each flower's average height.</p></li>
+        <li><figure><img src="assets/pollinators/poster-draft3.jpg" alt="Third draft of the poster with bolder headings and a recoloured region map" loading="lazy"></figure><span class="step-n">Draft 3</span><p>After midterm: bolder headings, a map recoloured to match the flowers, labels pulled in from the edges.</p></li>
+      </ol>
+    </section>
+
+    <!-- Seed packets -->
+    <section class="case-section" id="seed-packets">
+      <h3 class="label">Seed packets</h3>
+      <div class="prose">
+        <p class="lead">Regional Roots</p>
+        <p>A Pollinator Mix of four native Northeast flowers. The front of each packet features the flower with a white sticker-style outline; the back explains what it needs, when it blooms and which wildlife it supports, with a link to learn more and buy.</p>
+      </div>
+      <ul class="packets">
+        <li><img src="assets/pollinators/packet-front-wild-bergamot.jpg" alt="Wild bergamot seed packet front" loading="lazy" width="700" height="980"><span>Wild bergamot</span></li>
+        <li><img src="assets/pollinators/packet-front-aster.jpg" alt="Blue aster seed packet front" loading="lazy" width="700" height="980"><span>Blue aster</span></li>
+        <li><img src="assets/pollinators/packet-front-gray-headed-coneflower.jpg" alt="Gray-headed coneflower seed packet front" loading="lazy" width="700" height="980"><span>Gray-headed coneflower</span></li>
+        <li><img src="assets/pollinators/packet-front-wreath-goldenrod.jpg" alt="Wreath goldenrod seed packet front" loading="lazy" width="700" height="980"><span>Wreath goldenrod</span></li>
+      </ul>
+      <div class="split reverse">
+        <figure class="frame">
+          <img src="assets/pollinators/packet-back.jpg" alt="Back of the wild bergamot packet with a description, bloom time, sunlight, soil, height and wildlife benefits" loading="lazy" width="800" height="1120">
+        </figure>
+        <figure class="frame">
+          <img src="assets/pollinators/packets-grid.jpg" alt="Grid of Regional Roots seed packets in all four flowers" loading="lazy" width="1800" height="1350">
+        </figure>
+      </div>
+
+      <p class="mini-label steps-title">How it got there</p>
+      <ol class="steps three">
+        <li><figure><img src="assets/pollinators/packet-sketch-b.jpg" alt="Procreate sketches of seed packet fronts and backs" loading="lazy"></figure><span class="step-n">Sketches</span><p>Rough Procreate sketches, then a look at real seed packets led to starting fresh.</p></li>
+        <li><figure><img src="assets/pollinators/packet-draft1.jpg" alt="First packet mockup draft" loading="lazy"></figure><span class="step-n">Draft 1</span><p>The poster's flowers carried over, with descriptions added to the back of each packet.</p></li>
+        <li><figure><img src="assets/pollinators/packet-draft2.jpg" alt="Second packet mockup draft with paper texture" loading="lazy"></figure><span class="step-n">Draft 2</span><p>After feedback: paper texture, white outlines on each flower, and fuller descriptions.</p></li>
+      </ol>
+      <div class="prose after-steps">
+        <p>The final round named the brand Regional Roots, added a website to the back of each packet, and tinted the lighter label panel a subtle green.</p>
+      </div>
+    </section>
+
+    <!-- Carousel -->
+    <section class="case-section" id="carousel">
+      <h3 class="label">Carousel</h3>
+      <div class="prose">
+        <p>A four-slide Instagram carousel brings the campaign together: it hooks with the problem, gives two simple actions, and closes on the Regional Roots seed packets with a QR code to claim a local seed mix.</p>
+      </div>
+      <ul class="slides">
+        <li><img src="assets/pollinators/carousel-1.jpg" alt="Slide 1: Protect Pollinators, Plant Native, swipe to learn more" loading="lazy" width="900" height="900"></li>
+        <li><img src="assets/pollinators/carousel-2.jpg" alt="Slide 2: 22% of native pollinators in North America are at an elevated risk of extinction" loading="lazy" width="900" height="900"></li>
+        <li><img src="assets/pollinators/carousel-3.jpg" alt="Slide 3: Protect pollinators by planting native and reducing pesticide use" loading="lazy" width="900" height="900"></li>
+        <li><img src="assets/pollinators/carousel-4.jpg" alt="Slide 4: With Regional Roots it's not just native, it's regional, with seed packets and a QR code" loading="lazy" width="900" height="900"></li>
+      </ul>
+      <figure class="frame">
+        <img src="assets/pollinators/carousel-mockup.jpg" alt="The four carousel slides shown in an Instagram feed on a phone" loading="lazy" width="1800" height="1251">
+      </figure>
+      <div class="prose after-steps">
+        <p>After the final critique, the gradient from the second slide was pushed further and the white outline was added to every flower and to the seed packets, helping them pop off the page.</p>
+      </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="case-section" id="reflection">
+      <h3 class="label">Reflection</h3>
+      <div class="prose">
+        <p class="placeholder-text">What you learned from this project, what you'd do next, and how critique shaped the final work.</p>
+      </div>
+      <p class="credits">Botanical illustrations sourced from Maine Native Plants, Adobe Stock, Shutterstock and other references. Layout, branding, typography and design by Katie Lee.</p>
+    </section>
+
+    <a class="back bottom" href="index.html#work">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      back to work
+    </a>
+  </main>
+
+  <script src="nav.js"></script>
+  <script>
+    // ---- On-this-page contents: highlight the section you're reading; the dot glides to it ----
+    (() => {
+      const toc = document.querySelector('.toc');
+      if (!toc) return;
+      const links = [...toc.querySelectorAll('a')];
+      const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+      const dot = toc.querySelector('.toc-dot');
+      let active = null;
+
+      function setActive(i) {
+        if (i === active) return;
+        active = i;
+        links.forEach((a, j) => a.toggleAttribute('aria-current', j === i));
+        const a = links[i];
+        dot.style.transform = `translateY(${a.offsetTop + a.offsetHeight / 2 - 3}px)`;
+        dot.style.opacity = 1;
+      }
+
+      // Start level with the "Overview" heading, then stick near the top while scrolling
+      const STICK_AT = 96;
+      function position() {
+        const overviewLabel = sections[0].querySelector('.label') || sections[0];
+        const firstText = links[0].getBoundingClientRect().top - toc.getBoundingClientRect().top
+                          + parseFloat(getComputedStyle(links[0]).paddingTop);
+        const top = overviewLabel.getBoundingClientRect().top - firstText;
+        toc.style.top = Math.max(STICK_AT, top) + 'px';
+      }
+
+      function update() {
+        position();
+        const line = innerHeight * 0.35;
+        let i = 0;
+        sections.forEach((sec, j) => { if (sec.getBoundingClientRect().top <= line) i = j; });
+        // at the very bottom, the last section counts as current
+        if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) i = sections.length - 1;
+        setActive(i);
+      }
+
+      addEventListener('scroll', update, { passive: true });
+      addEventListener('resize', () => { const i = active; active = null; setActive(i ?? 0); position(); });
+      (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
+        dot.style.transition = 'none';
+        update();
+        requestAnimationFrame(() => { dot.style.transition = ''; });
+      });
+    })();
+  </script>
+</body>
+</html>

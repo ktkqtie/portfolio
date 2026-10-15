@@ -4,9 +4,7 @@
 !/.gitignore
 !/.nojekyll
 !/CNAME
-!/index.html
-!/about.html
-!/duckweather.html
+!/*.html
 !/styles.css
 !/nav.js
 !/lamp/

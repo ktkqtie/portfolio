@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Totten Trot 5K · Katie Lee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Caveat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="lamp/lamp.css">
+  <script>
+    // Apply a saved light/dark choice (from the lamp) before the page appears, so it doesn't flash
+    try {
+      const theme = localStorage.getItem("lamp.theme");
+      if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+    } catch {}
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="index.html">
+        <img src="assets/duck-nav.png" alt="" width="120" height="192">
+        <span>katie lee</span>
+      </a>
+
+      <ul class="links">
+        <li><a href="index.html" aria-current="page">work</a></li>
+        <li><a href="art.html">art</a></li>
+        <li><a href="about.html">about</a></li>
+        <li><a href="#">resume</a></li>
+        <li class="tab-dot" aria-hidden="true"></li>
+      </ul>
+
+      <div class="social">
+        <a href="https://www.linkedin.com/in/katie-lee157/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+            <circle cx="5.5" cy="5" r="2"/>
+            <rect x="3.5" y="9" width="4" height="11" rx="1"/>
+            <path d="M10 9h3.6v1.6c.8-1.2 2-1.9 3.6-1.9 2.6 0 4.3 1.7 4.3 4.9V20h-4v-6.3c0-1.3-.7-2-1.7-2s-1.8.7-1.8 2V20H10z"/>
+          </svg>
+        </a>
+        <a href="mailto:katielee157@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2.5"/>
+            <path d="M3.5 7l8.5 6 8.5-6"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- On-this-page contents: sticks to the left on wide screens -->
+  <nav class="toc" aria-label="On this page">
+    <p class="toc-title">On this page</p>
+    <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#final">Final design</a></li>
+        <li><a href="#reflection">Reflection</a></li>
+      <li class="toc-dot" aria-hidden="true"></li>
+    </ul>
+  </nav>
+
+  <main class="wrap case">
+    <a class="back" href="index.html#work">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      back to work
+    </a>
+
+    <!-- Title -->
+    <header class="case-head">
+      <div class="case-title">
+        <h1>Totten Trot 5K</h1>
+        <ul class="tags">
+          <li>illustration</li>
+          <li>2023</li>
+        </ul>
+      </div>
+      <p class="lede">A hand-drawn race shirt for the Bayside Historical Society.</p>
+
+      <figure class="case-hero">
+        <img src="assets/totten/shirt.jpg" alt="Black t-shirt printed with the gold Totten Trot 5K illustration" width="1800" height="1350">
+      </figure>
+
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Illustrator</dd></div>
+        <div><dt>Timeline</dt><dd>2023</dd></div>
+        <div><dt>Tools</dt><dd>Procreate</dd></div>
+      </dl>
+    </header>
+
+    <!-- Overview -->
+    <section class="case-section" id="overview">
+      <h3 class="label">Overview</h3>
+      <div class="prose">
+        <p class="lead">The official shirt design for the Bayside Historical Society's 22nd annual Totten Trot 5K, held on October 29, 2023.</p>
+      </div>
+      <ul class="stats">
+        <li><strong>22nd</strong><span>annual race</span></li>
+        <li><strong>5K</strong><span>through the park</span></li>
+        <li><strong>1</strong><span>hand-drawn scene</span></li>
+      </ul>
+      <div class="prose">
+        <p>The illustration leans into the race's Halloween timing: costumed runners trot past a 5K sign under a cratered moon, with bats overhead, a jack-o'-lantern in the grass and a cat dashing along the path. Drawn entirely by hand, the scene is finished in gold on black for the shirt.</p>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="case-section" id="process">
+      <h3 class="label">Process</h3>
+      <div class="split video-split">
+        <figure class="frame timelapse">
+          <video id="timelapse" src="assets/totten/timelapse.mp4" poster="assets/totten/stage-sketch.jpg" autoplay muted loop playsinline preload="auto" width="640" height="920"
+                 aria-label="Time-lapse of the illustration being drawn, from rough sketch to finished line art"></video>
+          <figcaption>Time-lapse · sped up from 6 minutes</figcaption>
+        </figure>
+        <div class="prose">
+          <p>The scene started as a loose pencil sketch to block out the runners, the path and the skyline. Clean line art was then inked over the top, adding detail to each costume and texture to the moon and hills.</p>
+          <p>Lettering came last: the race name and Bayside Historical Society across the top, and the date and anniversary along the bottom, framing the scene like a poster.</p>
+        </div>
+      </div>
+
+      <p class="mini-label steps-title">Stages</p>
+      <ol class="steps">
+        <li><figure><img src="assets/totten/stage-sketch.jpg" alt="Rough pencil sketch of runners in a park" loading="lazy"></figure><span class="step-n">Sketch</span><p>Blocking out the composition.</p></li>
+        <li><figure><img src="assets/totten/stage-inking.jpg" alt="Line art being inked over the faded sketch" loading="lazy"></figure><span class="step-n">Inking</span><p>Clean line art over the sketch.</p></li>
+        <li><figure><img src="assets/totten/poster-frame.jpg" alt="Finished black line art with lettering" loading="lazy"></figure><span class="step-n">Line art</span><p>Details and lettering complete.</p></li>
+        <li><figure class="dark"><img src="assets/totten/final-art.jpg" alt="Final illustration in gold on black" loading="lazy"></figure><span class="step-n">Colour</span><p>Gold on black for the shirt.</p></li>
+      </ol>
+    </section>
+
+    <!-- Final -->
+    <section class="case-section" id="final">
+      <h3 class="label">Final design</h3>
+      <div class="split">
+        <figure class="frame dark-frame">
+          <img src="assets/totten/final-art.jpg" alt="Final Totten Trot 5K illustration in gold on black: Bayside Historical Society, October 29, 2023, 22nd annual" loading="lazy" width="1400" height="2015">
+        </figure>
+        <div class="prose">
+          <p>Gold line work on a deep charcoal ground gives the design a vintage, festive feel that reads clearly from a distance and prints cleanly as a single colour.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="case-section" id="reflection">
+      <h3 class="label">Reflection</h3>
+      <div class="prose">
+        <p class="placeholder-text">How this project came about, what it was like designing for a real event, and what you'd do differently now.</p>
+      </div>
+    </section>
+
+    <a class="back bottom" href="index.html#work">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      back to work
+    </a>
+  </main>
+
+  <script src="nav.js"></script>
+  <script>
+    // ---- Time-lapse: plays automatically, muted and looping (still with controls for reduce motion) ----
+    (() => {
+      const video = document.getElementById('timelapse');
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        video.removeAttribute('autoplay');
+        video.pause();
+        video.controls = true;
+        return;
+      }
+      video.play().catch(() => {});
+    })();
+  </script>
+  <script>
+    // ---- On-this-page contents: highlight the section you're reading; the dot glides to it ----
+    (() => {
+      const toc = document.querySelector('.toc');
+      if (!toc) return;
+      const links = [...toc.querySelectorAll('a')];
+      const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+      const dot = toc.querySelector('.toc-dot');
+      let active = null;
+
+      function setActive(i) {
+        if (i === active) return;
+        active = i;
+        links.forEach((a, j) => a.toggleAttribute('aria-current', j === i));
+        const a = links[i];
+        dot.style.transform = `translateY(${a.offsetTop + a.offsetHeight / 2 - 3}px)`;
+        dot.style.opacity = 1;
+      }
+
+      // Start level with the "Overview" heading, then stick near the top while scrolling
+      const STICK_AT = 96;
+      function position() {
+        const overviewLabel = sections[0].querySelector('.label') || sections[0];
+        const firstText = links[0].getBoundingClientRect().top - toc.getBoundingClientRect().top
+                          + parseFloat(getComputedStyle(links[0]).paddingTop);
+        const top = overviewLabel.getBoundingClientRect().top - firstText;
+        toc.style.top = Math.max(STICK_AT, top) + 'px';
+      }
+
+      function update() {
+        position();
+        const line = innerHeight * 0.35;
+        let i = 0;
+        sections.forEach((sec, j) => { if (sec.getBoundingClientRect().top <= line) i = j; });
+        // at the very bottom, the last section counts as current
+        if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) i = sections.length - 1;
+        setActive(i);
+      }
+
+      addEventListener('scroll', update, { passive: true });
+      addEventListener('resize', () => { const i = active; active = null; setActive(i ?? 0); position(); });
+      (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
+        dot.style.transition = 'none';
+        update();
+        requestAnimationFrame(() => { dot.style.transition = ''; });
+      });
+    })();
+  </script>
+</body>
+</html>
