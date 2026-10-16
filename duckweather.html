@@ -59,7 +59,7 @@
         <li><a href="#concept">Concept</a></li>
         <li><a href="#process">Process</a></li>
         <li><a href="#meet-the-ducks">Meet the ducks</a></li>
-        <li><a href="#final-design">Final design</a></li>
+        <li><a href="#the-build">The build</a></li>
         <li><a href="#reflection">Reflection</a></li>
       <li class="toc-dot" aria-hidden="true"></li>
     </ul>
@@ -162,35 +162,100 @@
     <section class="case-section" id="process">
       <h3 class="label">Process</h3>
       <div class="prose">
-        <p class="placeholder-text">Sketches, early drafts, and how the ducks and the app took shape.</p>
+        <p>Each duck was drawn in Procreate across many layers, which fell into three stages. The first layers were the sketch and outline, working out the pose and outfit. Next came the base color layers, blocking in flat colors. The last layers were for shading and extra details, which really brought each duck to life.</p>
       </div>
-      <div class="case-images">
-        <div class="case-image">image coming soon</div>
-        <div class="case-image">image coming soon</div>
+      <!-- Stage labels sit on top once; each duck is a .layer-temp caption + a .layer-row (outline, base colors, details) -->
+      <div class="layers">
+        <ol class="layer-labels" aria-hidden="true">
+          <li><span>01</span>Outline</li>
+          <li><span>02</span>Base colors</li>
+          <li><span>03</span>Shadows &amp; details</li>
+        </ol>
+
+        <p class="layer-temp">Coldest · 0–5°</p>
+        <div class="layer-row">
+          <img class="line-art" src="assets/duckweather/process/outline.png" alt="Outline: line drawing of a duck in a fur-lined parka, frozen inside a block of ice" loading="lazy" width="765" height="900">
+          <img src="assets/duckweather/process/base-colors.png" alt="Base colors: the same frozen duck filled in with flat colors, brown parka, blue and yellow face, orange feet" loading="lazy" width="765" height="900">
+          <img src="assets/duckweather/process/details.png" alt="Shadows and details: the finished frozen duck with shading, fur texture, a darker parka and pale blue ice" loading="lazy" width="765" height="900">
+        </div>
+
+        <p class="layer-temp">Mild · 60–65°</p>
+        <div class="layer-row">
+          <img class="line-art" src="assets/duckweather/process/mild-outline.png" alt="Outline: line drawing of a duck in headphones, an open double-breasted trench coat, tee and jeans" loading="lazy" width="765" height="900">
+          <img src="assets/duckweather/process/mild-base-colors.png" alt="Base colors: the same duck filled in with blue headphones, a tan trench coat, dark red tee and blue jeans" loading="lazy" width="765" height="900">
+          <img src="assets/duckweather/process/mild-details.png" alt="Shadows and details: the finished duck with soft shading on the headphones, the inside of the trench coat, the tee and jeans" loading="lazy" width="765" height="900">
+        </div>
+
+        <p class="layer-temp">Hottest · 95–100°</p>
+        <div class="layer-row">
+          <img class="line-art" src="assets/duckweather/process/hot-outline.png" alt="Outline: line drawing of a sweating, ruffled duck wearing only shorts" loading="lazy" width="765" height="900">
+          <img src="assets/duckweather/process/hot-base-colors.png" alt="Base colors: the same duck filled in with flat yellow feathers, orange beak and feet, green shorts and light blue sweat drops" loading="lazy" width="765" height="900">
+          <img src="assets/duckweather/process/hot-details.png" alt="Shadows and details: the finished duck with a flushed red-orange head and shading under its chin, along its ruffled feathers and on its shorts" loading="lazy" width="765" height="900">
+        </div>
       </div>
     </section>
 
     <!-- All the ducks -->
     <section class="case-section" id="meet-the-ducks">
       <h3 class="label">Meet the ducks</h3>
-      <p class="prose-note">A new outfit for every five degrees, from frozen solid to melting.</p>
+      <div class="prose">
+        <p>The duck gets a new outfit for every five degrees, from 0° to 100°, plus one for rain. Weather often barely moves from one day to the next, so smaller steps mean the duck changes more often and checking the forecast never gets repetitive. Five degrees is also roughly when you'd actually notice a difference and reach for another layer.</p>
+      </div>
       <div class="duck-grid" id="duckGrid"></div>
+
+      <!-- Design choices at the extremes -->
+      <div class="extremes">
+        <div class="extreme">
+          <div class="extreme-ducks">
+            <img src="assets/duckweather/ducks/0-5.png" alt="0 to 5 degrees: duck in a fur-lined parka, frozen inside a block of ice" loading="lazy">
+            <img src="assets/duckweather/ducks/5-10.png" alt="5 to 10 degrees: duck in an earflap beanie, scarf and puffer, with ice cracking around it" loading="lazy">
+            <img src="assets/duckweather/ducks/10-15.png" alt="10 to 15 degrees: duck in a beanie, scarf and black puffer, with ice shards at its feet" loading="lazy">
+          </div>
+          <div class="prose">
+            <p class="mini-label">The coldest days · 0–15°</p>
+            <p>On the coldest days the duck bundles up in its heaviest layers: parkas, puffers, beanies and scarves. Its face fades from icy blue to yellow, and at 0–5° it's frozen solid in a block of ice. As it warms up, the ice cracks open and breaks away into shards at its feet, so you can watch the duck thaw out across the range.</p>
+          </div>
+        </div>
+        <div class="extreme">
+          <div class="extreme-ducks">
+            <img src="assets/duckweather/ducks/85-90.png" alt="85 to 90 degrees: duck in a bandana, striped tee and shorts, with a sweat drop" loading="lazy">
+            <img src="assets/duckweather/ducks/90-95.png" alt="90 to 95 degrees: sweating duck in a propeller cap and tank top" loading="lazy">
+            <img src="assets/duckweather/ducks/95-100.png" alt="95 to 100 degrees: flushed, droopy duck in just shorts, dripping with sweat" loading="lazy">
+          </div>
+          <div class="prose">
+            <p class="mini-label">The hottest days · 85–100°</p>
+            <p>The hottest days work the other way around: the duck sheds layers. It goes from a bandana and tee to a tank top and propeller cap, and finally down to just shorts. Sweat drops, a flushed red head and droopy, ruffled feathers exaggerate and help show the heat.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Final design -->
-    <section class="case-section" id="final-design">
-      <h3 class="label">Final design</h3>
+    <!-- The build -->
+    <section class="case-section" id="the-build">
+      <h3 class="label">The build</h3>
       <div class="prose">
-        <p class="placeholder-text">Screens of the finished app and the key decisions behind them.</p>
+        <p>With the ducks drawn, I built Duckweather into a working site with Claude Code. Each duck was exported as its own transparent image and named by its temperature range, so the site could pick the right one automatically.</p>
+        <p>Live forecasts come from Open-Meteo, a free weather API. When you search for a city, the site grabs the current temperature, finds which five-degree range it falls into and shows that duck, or the rain duck when it's raining. The site also follows the sun in that city: once the sun sets it switches to a darker night look, and it brightens back up to day when the sun rises.</p>
       </div>
-      <div class="case-image wide">image coming soon</div>
+      <div class="split build-shots">
+        <figure class="frame">
+          <img src="assets/duckweather/app-screenshot-day.jpg" alt="Duckweather in the daytime: a duck in a cardigan with a blue bow beside 72 degrees and overcast skies in New York, with a six-day forecast and hourly temperature" loading="lazy" width="2000" height="1125">
+          <figcaption>Daytime</figcaption>
+        </figure>
+        <figure class="frame">
+          <img src="assets/duckweather/app-screenshot-night.jpg" alt="Duckweather at night: a duck in a pink jacket and headphones beside 66 degrees and clear skies in New York, with a six-day forecast and hourly temperature" loading="lazy" width="2000" height="1127">
+          <figcaption>Nighttime</figcaption>
+        </figure>
+      </div>
     </section>
 
     <!-- Reflection -->
     <section class="case-section" id="reflection">
       <h3 class="label">Reflection</h3>
       <div class="prose">
-        <p class="placeholder-text">What you learned and what you'd do next.</p>
+        <p>Duckweather was my first time building a website, with little to no coding experience. While drawing 21 ducks, I learned how to express personality using small details, and working with Claude Code showed me I don't need to be an engineer to bring my designs to life.</p>
+        <p>With more time, I would've loved to dive deeper into this project with a home screen widget, an option for users to dress and customize their own duck, and new ducks for wind and snow. I'd also add more reactive features, like the duck moving when tapped on.</p>
+        <p>This project showed me that I can carry an idea all the way from sketch to a live site. Claude Code is now one more tool in my process, and I'm excited to see what I build next.</p>
       </div>
     </section>
 
@@ -220,13 +285,11 @@
         dot.style.opacity = 1;
       }
 
-      // Start level with the "Overview" heading, then stick near the top while scrolling
+      // Start level with the "back to work" link at the top of the page, then stick near the top while scrolling
       const STICK_AT = 96;
       function position() {
-        const overviewLabel = sections[0].querySelector('.label') || sections[0];
-        const firstText = links[0].getBoundingClientRect().top - toc.getBoundingClientRect().top
-                          + parseFloat(getComputedStyle(links[0]).paddingTop);
-        const top = overviewLabel.getBoundingClientRect().top - firstText;
+        const start = document.querySelector('.case > .back');
+        const top = start.getBoundingClientRect().top;
         toc.style.top = Math.max(STICK_AT, top) + 'px';
       }
 
@@ -274,7 +337,7 @@
       const grid = document.getElementById('duckGrid');
       [...ranges, 'rain'].forEach(r => {
         const fig = document.createElement('figure');
-        const label = r === 'rain' ? 'rain' : r.replace('-', '–') + '°';
+        const label = r === 'rain' ? 'RAIN' : r.replace('-', '–') + '°';
         fig.innerHTML = `<img src="${path(r)}" alt="Duck for ${label}" loading="lazy"><figcaption>${label}</figcaption>`;
         grid.appendChild(fig);
       });
