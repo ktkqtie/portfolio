@@ -1029,3 +1029,10 @@ h1, h2, h3, .lede { text-wrap: balance; }
 .zoom-view img { max-width: min(92vw, calc(100vw - 160px)); }
 .zoom-view.single .lb-nav { display: none; }
 .zoom-view.single img { max-width: 92vw; }
+/* Bottom of case studies: back to work on the left, next project on the right */
+.case-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-top: 72px; padding-top: 24px; }
+.next-project { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; text-align: right; }
+.next-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.next-title { display: inline-flex; align-items: center; gap: 8px; font-size: 18px; color: var(--ink); transition: gap 0.25s ease; }
+.next-title svg { width: 16px; height: 16px; }
+.next-project:hover .next-title { gap: 12px; }
