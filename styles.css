@@ -999,3 +999,8 @@ h1, h2, h3, .lede { text-wrap: balance; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .signature path { stroke: #9bb8d0; } }
 :root[data-theme="dark"] .signature path { stroke: #9bb8d0; }
 @media (max-width: 720px) { .signature { width: 170px; margin-top: 8px; } }
+/* Signature: black (white in dark mode), a bit smaller */
+.signature { width: 160px; }
+.signature path, :root[data-theme="dark"] .signature path { stroke: var(--ink); stroke-width: 8; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .signature path { stroke: var(--ink); } }
+@media (max-width: 720px) { .signature { width: 140px; } }
