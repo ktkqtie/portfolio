@@ -1047,3 +1047,4 @@ h1, h2, h3, .lede { text-wrap: balance; }
 /* A Night to Remember: pale concrete fading down into the flyer's night blue */
 .card-frame.night { background: linear-gradient(180deg, #d8d6d1 0%, #bcbcbd 45%, #8e97ad 100%); }
 .team span { margin-top: 6px; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; }
+.team-note { margin-top: 20px; }
