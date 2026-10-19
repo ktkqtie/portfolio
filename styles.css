@@ -1057,3 +1057,10 @@ h1, h2, h3, .lede { text-wrap: balance; }
 :root[data-theme="dark"] .spec .aa-img { filter: invert(1); }
 @media (max-width: 720px) { .spec .aa.poppins { font-size: 60px; } .spec .aa-img { height: 52px; margin-top: -8px; } .swatches.five { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 #brand .type-color-row { margin-top: 8px; }
+/* Photobooth: large mockup on its own, then the three panels at equal height filling the width (no grey boxes) */
+.booth { display: block; margin-top: 32px; }
+.booth figure { margin: 0; }
+.booth-main img { display: block; height: min(560px, 70vw); width: auto; margin: 0 auto; }
+.booth-panels { display: grid; grid-template-columns: 836fr 836fr 506fr; gap: 16px; margin-top: 40px; align-items: start; }
+.booth-panels img { display: block; width: 100%; height: auto; border-radius: 4px; }
+@media (max-width: 720px) { .booth-panels { gap: 8px; margin-top: 24px; } }
