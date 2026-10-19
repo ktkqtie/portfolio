@@ -29,7 +29,6 @@
         <li><a href="index.html" aria-current="page">work</a></li>
         <li><a href="art.html">art</a></li>
         <li><a href="about.html">about</a></li>
-        <li><a href="#">resume</a></li>
         <li class="tab-dot" aria-hidden="true"></li>
       </ul>
 
@@ -65,7 +64,7 @@
     </ul>
   </nav>
 
-  <main class="wrap case">
+  <main class="wrap case roomy">
     <a class="back" href="index.html#work">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
       back to work
@@ -285,10 +284,10 @@
         dot.style.opacity = 1;
       }
 
-      // Start level with the "back to work" link at the top of the page, then stick near the top while scrolling
+      // Start level with the top of the video, then stick near the top while scrolling
       const STICK_AT = 96;
       function position() {
-        const start = document.querySelector('.case > .back');
+        const start = document.querySelector('.case-video');
         const top = start.getBoundingClientRect().top;
         toc.style.top = Math.max(STICK_AT, top) + 'px';
       }

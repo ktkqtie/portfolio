@@ -520,7 +520,7 @@ html { scroll-behavior: smooth; }
 /* Sits in the empty left margin beside the 920px column; hidden when there isn't room */
 .toc {
   position: fixed;
-  top: 140px;              /* set by the page script (level with "Overview", or "back to work" on Duckweather) */
+  top: 140px;              /* set by the page script (level with "Overview", or the video on Duckweather) */
   left: max(24px, calc((100vw - 920px) / 2 - 196px));
   width: 160px;
   font-size: 12px;
@@ -626,7 +626,9 @@ html { scroll-behavior: smooth; }
 /* type + colour */
 .type-color { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px; margin-top: 32px; }
 .type-sample { margin: 0 0 18px; }
-.type-sample.sigurd img { display: block; width: 72%; height: auto; border-radius: 8px; mix-blend-mode: multiply; }
+.type-sample.sigurd img { display: block; width: 72%; height: auto; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .type-sample.sigurd img { filter: invert(1); } }
+:root[data-theme="dark"] .type-sample.sigurd img { filter: invert(1); }
 .type-sample span { display: block; font-size: 20px; line-height: 1.3; color: var(--ink); }
 .type-sample small { padding-top: 6px; }
 .futura { font-family: "Futura PT", Futura, "Century Gothic", "Avenir Next", sans-serif; font-weight: 500; }
@@ -825,3 +827,175 @@ html { scroll-behavior: smooth; }
   .base-duck { grid-template-columns: 100px minmax(0, 1fr); column-gap: 20px; }
 }
 
+/* ---------- Protect Pollinators layout touch-ups ---------- */
+/* Inline facts (e.g. Audience) under a paragraph, without a box */
+.facts.inline-facts { grid-template-columns: 1fr; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--surface); }
+
+/* Numbered row, in the same style as Duckweather's "01 Outline" stage labels */
+.numbered { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; list-style: none; margin: 24px 0 0; padding: 0; }
+.numbered li { padding-top: 12px; border-top: 1px solid var(--line); }
+.numbered .num { display: block; margin-bottom: 10px; font-size: 11px; color: var(--faint); letter-spacing: 0.04em; }
+.numbered strong { display: block; font-size: 15px; font-weight: 500; color: var(--ink); }
+.numbered small { display: block; margin: 2px 0 8px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: color-mix(in srgb, var(--muted) 65%, var(--faint)); }
+.numbered p { margin: 0; font-size: 13px; line-height: 1.6; color: color-mix(in srgb, var(--ink) 72%, var(--muted)); }
+
+/* Iterations: numbered labels once on top, then the drafts with short notes */
+.iter { margin-top: 48px; }
+.iter-labels, .iter-row { display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); gap: 16px; list-style: none; margin: 0; padding: 0; }
+.iter-labels { margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--surface); font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
+.iter-labels span { margin-right: 8px; font-size: 11px; color: var(--faint); }
+.iter-row figure { margin: 0 0 10px; aspect-ratio: 3 / 4; border-radius: 10px; overflow: hidden; background: var(--surface); }
+.iter[style*="--cols:3"] .iter-row figure { aspect-ratio: 4 / 3; }
+.iter-row img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.iter-row p { margin: 0; font-size: 12.5px; line-height: 1.55; color: color-mix(in srgb, var(--ink) 72%, var(--muted)); }
+
+/* Packet back beside its notes */
+.split.back-split { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); align-items: center; margin-top: 24px; }
+
+@media (max-width: 720px) {
+  .numbered { grid-template-columns: 1fr; gap: 16px; }
+  .iter-labels, .iter-row { gap: 8px; }
+  .iter-labels { font-size: 11px; }
+  .iter-labels span { display: block; margin: 0 0 2px; }
+  .iter-row p { font-size: 11.5px; }
+  .split.back-split { grid-template-columns: 1fr; }
+}
+
+/* Home card: image set slightly inside the frame on a soft gradient, like the Duckweather card */
+.card-frame.framed { display: grid; place-items: center; }
+.card-frame.framed img {
+  width: 90%;
+  height: 86%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(40, 35, 25, 0.08), 0 18px 40px rgba(50, 40, 25, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.card:hover .card-frame.framed { transform: none; box-shadow: none; }
+.card:hover .card-frame.framed img { transform: translateY(-4px); box-shadow: 0 1px 2px rgba(40, 35, 25, 0.08), 0 26px 50px rgba(50, 40, 25, 0.26); }
+/* Regional Roots: goldenrod yellow drifting into aster blue, from the flowers on the packets */
+.card-frame.rr { background: linear-gradient(135deg, #f1e3a6 0%, #e9e1cf 48%, #c9d0ea 100%); }
+@media (max-width: 720px) { .card-frame.framed img { width: 92%; height: 88%; border-radius: 8px; } }
+/* Hero the same shape as the Duckweather video (16:9), so Role / Timeline / Tools sit higher */
+.case-hero.fit img { aspect-ratio: 16 / 9; }
+@media (max-width: 720px) { .case-hero.fit { border-radius: 10px; } }
+/* Extra breathing room between case-study sections (Regional Roots) */
+.case.roomy .case-section { margin-top: 128px; }
+@media (max-width: 720px) { .case.roomy .case-section { margin-top: 88px; } }
+.prose p.pull strong { font-weight: 600; }
+.numbered ul { margin: 10px 0 0; padding: 0; list-style: none; font-size: 12.5px; line-height: 1.55; color: color-mix(in srgb, var(--ink) 72%, var(--muted)); }
+.numbered ul li { position: relative; padding: 0 0 0 12px; border: 0; }
+.numbered ul li + li { margin-top: 4px; }
+.numbered ul li::before { content: ''; position: absolute; left: 0; top: 0.62em; width: 4px; height: 4px; border-radius: 50%; background: var(--faint); }
+/* Strategy columns: rows line up across all three (subgrid), the sentence reads first,
+   and the key points follow as a green-dot list */
+.numbered:has(ul) { grid-template-rows: repeat(5, auto); row-gap: 0; }
+.numbered:has(ul) > li { display: grid; grid-row: span 5; grid-template-rows: subgrid; }
+.numbered:has(ul) > li > p { margin-bottom: 16px; font-size: 13.5px; color: var(--ink); }
+.numbered ul { margin: 0; padding: 0; }
+.numbered ul li::before { background: #7cb87f; }
+@media (max-width: 720px) {
+  .numbered:has(ul) { grid-template-rows: none; row-gap: 24px; }
+  .numbered:has(ul) > li { display: block; }
+}
+/* Collage with a see-through background: no rounded grey box behind it */
+.frame.cutout img { background: none; border-radius: 0; }
+/* Type & color: three "Aa" specimens over a row of pill swatches */
+.type-color-row { margin-top: 56px; }
+.specimens { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 20px; }
+.spec { margin: 0; }
+.spec img, .spec .aa { display: block; height: 64px; margin-bottom: 14px; }
+.spec img { width: auto; }
+.spec .aa { font-size: 84px; line-height: 64px; color: var(--ink); }
+.spec .aa.georgia { font-weight: 400; }
+.spec figcaption { font-size: 13.5px; font-weight: 500; color: var(--ink); }
+.spec figcaption small { display: block; margin-top: 3px; font-size: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.08em; color: color-mix(in srgb, var(--muted) 65%, var(--faint)); }
+.swatches { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; list-style: none; margin: 40px 0 0; padding: 0; font-size: 12px; letter-spacing: 0.02em; color: color-mix(in srgb, var(--ink) 72%, var(--muted)); }
+.swatches span { display: block; height: 40px; margin-bottom: 10px; border-radius: 999px; background: var(--c); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .spec img { filter: invert(1); } }
+:root[data-theme="dark"] .spec img { filter: invert(1); }
+@media (max-width: 720px) {
+  .specimens { gap: 12px; }
+  .spec img, .spec .aa { height: 44px; }
+  .spec .aa { font-size: 58px; line-height: 44px; }
+  .swatches { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 12px; }
+}
+/* Even out the cap heights so the three "Aa" read the same size */
+.spec .aa.georgia { font-size: 90px; }
+.spec .aa.futura { font-size: 80px; }
+@media (max-width: 720px) { .spec .aa.georgia { font-size: 62px; } .spec .aa.futura { font-size: 55px; } }
+/* Sigurd "Aa" drawn as vector outlines from the font, so it stays sharp and follows the theme colour */
+.spec .aa-svg { display: block; height: 64px; width: auto; margin-bottom: 14px; color: var(--ink); overflow: visible; }
+@media (max-width: 720px) { .spec .aa-svg { height: 44px; } }
+/* Closer to the reference: centred specimens, shorter pill swatches with the hex centred underneath */
+.spec { text-align: center; }
+.spec .aa-svg, .spec .aa { margin-left: auto; margin-right: auto; }
+.swatches { text-align: center; margin-top: 48px; }
+.swatches span { width: 72px; height: 46px; margin: 0 auto 10px; }
+@media (max-width: 720px) { .swatches span { width: 60px; height: 38px; } }
+/* Hex codes in the same small caps label style as the rest of the page */
+.swatches li { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: color-mix(in srgb, var(--muted) 80%, var(--ink)); }
+.type-color-row { margin-top: 104px; }
+@media (max-width: 720px) { .type-color-row { margin-top: 72px; } }
+.type-notes { margin-top: 48px; }
+/* Typesetting: no single-word last lines in body copy, evenly balanced headings */
+p, li, dd, figcaption, blockquote { text-wrap: pretty; }
+h1, h2, h3, .lede { text-wrap: balance; }
+/* Problem statement: large enough that the first line runs the full width of the text column */
+.prose p.pull { font-size: 22px; line-height: 1.45; letter-spacing: -0.005em; }
+@media (max-width: 720px) { .prose p.pull { font-size: 18px; } }
+/* Final poster: crisper corners, and it opens larger on click */
+.poster-frame img { border-radius: 4px; }
+.zoomable { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; }
+.zoomable img { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.zoomable:hover img { transform: translateY(-3px); box-shadow: 0 16px 36px var(--shadow); }
+.zoomable:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 4px; }
+
+/* Viewer: the whole poster, as large as the screen allows */
+.zoom-view img { display: block; max-height: 92vh; max-width: 92vw; width: auto; height: auto; border-radius: 3px; }
+.zoom-view .lb-close { position: fixed; z-index: 1; background: rgba(30, 30, 28, 0.6); }
+.prose.airy p { margin-bottom: 24px; }
+.prose.airy p:last-child { margin-bottom: 0; }
+/* Poster iterations: two per row so the drafts are big enough to read */
+.iter-grid ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 28px; list-style: none; margin: 12px 0 0; padding: 0; }
+.iter-grid .iter-name { margin: 0 0 12px; padding-bottom: 10px; border-bottom: 1px solid var(--surface); font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
+.iter-grid .iter-name span { margin-right: 8px; font-size: 11px; color: var(--faint); }
+.iter-grid figure { margin: 0 0 12px; aspect-ratio: 7 / 10; border-radius: 6px; overflow: hidden; background: var(--surface); }
+.iter-grid img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.iter-grid li > p:last-child { margin: 0; font-size: 13px; line-height: 1.6; color: color-mix(in srgb, var(--ink) 72%, var(--muted)); }
+@media (max-width: 720px) { .iter-grid ol { gap: 28px 14px; } .iter-grid li > p:last-child { font-size: 12px; } }
+/* Clickable iteration thumbnails fill their frame; the viewer shows the full uncropped image */
+.iter-grid .zoomable { height: 100%; }
+.iter-grid .zoomable img { border-radius: 0; }
+.iter-grid .zoomable:hover img { transform: scale(1.02); box-shadow: none; }
+/* Row headings ("1st drafts", "2nd drafts") span both columns */
+.iter-grid .iter-row-head { grid-column: 1 / -1; margin-bottom: -24px; padding-bottom: 10px; border-bottom: 1px solid var(--surface); font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
+@media (max-width: 720px) { .iter-grid .iter-row-head { margin-bottom: -16px; } }
+.iter-grid ol { margin-top: 24px; }
+/* One shared note under a row of drafts */
+.iter-grid .iter-row-note { grid-column: 1 / -1; margin-top: -16px; }
+.iter-grid .iter-row-note p { max-width: 640px; }
+.prose p.lead strong { font-weight: 600; }
+/* Seed packet pairs: two per row, crisp corners, click to view larger */
+.packet-pairs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; list-style: none; margin: 16px 0 0; padding: 0; }
+.packet-pairs img { display: block; width: 100%; height: auto; border-radius: 4px; }
+.packet-pairs span { display: block; margin-top: 8px; font-size: 11px; letter-spacing: 0.04em; color: var(--muted); }
+@media (max-width: 720px) { .packet-pairs { gap: 16px 10px; } }
+.packet-pairs span { margin-top: 12px; text-align: center; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+/* Packet iterations: tall sketch on the left, the two drafts stacked beside it; images keep their own shape */
+.iter-feature ol { grid-template-rows: auto auto; gap: 28px 28px; }
+.iter-feature .iter-tall { grid-row: span 2; }
+.iter-feature figure { aspect-ratio: auto; }
+.iter-feature img { height: auto; }
+@media (max-width: 720px) { .iter-feature ol { grid-template-columns: 1fr; } .iter-feature .iter-tall { grid-row: auto; } }
+/* About bio: darker text and more room between paragraphs */
+.bio p { margin-bottom: 22px; color: color-mix(in srgb, var(--ink) 80%, var(--muted)); }
+.bio p:last-child { margin-bottom: 0; }
+/* Signature under the bio, bottom right of the text column, level with the bottom of the photo */
+.about .bio { align-self: stretch; display: flex; flex-direction: column; }
+.signature { display: block; width: 210px; height: auto; margin: auto 0 0 auto; padding-top: 32px; overflow: visible; }
+.signature path { fill: none; stroke: #6789a3; stroke-width: 7.5; stroke-linecap: round; stroke-linejoin: round; }
+.signature.ready path { stroke-dasharray: 1 1; stroke-dashoffset: 1; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .signature path { stroke: #9bb8d0; } }
+:root[data-theme="dark"] .signature path { stroke: #9bb8d0; }
+@media (max-width: 720px) { .signature { width: 170px; margin-top: 8px; } }
