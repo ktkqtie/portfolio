@@ -1036,3 +1036,11 @@ h1, h2, h3, .lede { text-wrap: balance; }
 .next-title { display: inline-flex; align-items: center; gap: 8px; font-size: 18px; color: var(--ink); transition: gap 0.25s ease; }
 .next-title svg { width: 16px; height: 16px; }
 .next-project:hover .next-title { gap: 12px; }
+/* Next project title in the same small caps as "back to work" */
+.case-foot { align-items: center; }
+.next-project { flex-direction: row; align-items: center; gap: 6px; }
+.next-label { font-size: 12px; letter-spacing: 0.04em; color: var(--faint); }
+.next-label::after { content: ":"; }
+.next-title { gap: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); transition: color 0.2s ease, gap 0.25s ease; }
+.next-title svg { width: 14px; height: 14px; }
+.next-project:hover .next-title { color: var(--ink); gap: 9px; }
