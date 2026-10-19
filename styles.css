@@ -1048,3 +1048,12 @@ h1, h2, h3, .lede { text-wrap: balance; }
 .card-frame.night { background: linear-gradient(180deg, #d8d6d1 0%, #bcbcbd 45%, #8e97ad 100%); }
 .team span { margin-top: 6px; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; }
 .team-note { margin-top: 20px; }
+/* A Night to Remember type & color: two specimens, five swatches */
+.specimens.two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 560px; margin-left: auto; margin-right: auto; }
+.spec .aa.poppins { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 86px; }
+.spec .aa-img { display: block; height: 76px; width: auto; margin: -12px auto 14px; }
+.swatches.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .spec .aa-img { filter: invert(1); } }
+:root[data-theme="dark"] .spec .aa-img { filter: invert(1); }
+@media (max-width: 720px) { .spec .aa.poppins { font-size: 60px; } .spec .aa-img { height: 52px; margin-top: -8px; } .swatches.five { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+#brand .type-color-row { margin-top: 8px; }
