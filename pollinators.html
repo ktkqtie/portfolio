@@ -283,23 +283,46 @@
       <button type="button" class="lb-close" aria-label="Close">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
+      <button type="button" class="lb-nav lb-prev" aria-label="Previous image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
       <img id="zoomImg" src="" alt="">
+      <button type="button" class="lb-nav lb-next" aria-label="Next image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
     </dialog>
   </main>
 
   <script src="nav.js"></script>
   <script>
-    // ---- Click an image to see it larger ----
+    // ---- Click an image to see it larger; arrows step through the other images in the same group ----
     (() => {
       const box = document.getElementById('zoomView');
       const img = document.getElementById('zoomImg');
       if (!box) return;
-      document.querySelectorAll('.zoomable').forEach(btn => btn.addEventListener('click', () => {
-        const thumb = btn.querySelector('img');
+      const prev = box.querySelector('.lb-prev'), next = box.querySelector('.lb-next');
+      let group = [], current = 0;
+      function show(i) {
+        current = (i + group.length) % group.length;
+        const btn = group[current];
         img.src = btn.dataset.full;
-        img.alt = thumb.alt;
+        img.alt = btn.querySelector('img').alt;
+      }
+      document.querySelectorAll('.zoomable').forEach(btn => btn.addEventListener('click', () => {
+        // A group is the set of clickable images in the same list (carousel slides, packets, iterations)
+        const list = btn.closest('ul, ol');
+        group = list ? [...list.querySelectorAll('.zoomable')] : [btn];
+        box.classList.toggle('single', group.length < 2);
+        show(group.indexOf(btn));
         box.showModal();
       }));
+      prev.addEventListener('click', () => show(current - 1));
+      next.addEventListener('click', () => show(current + 1));
+      box.addEventListener('keydown', e => {
+        if (group.length < 2) return;
+        if (e.key === 'ArrowLeft') show(current - 1);
+        if (e.key === 'ArrowRight') show(current + 1);
+      });
       box.querySelector('.lb-close').addEventListener('click', () => box.close());
       box.addEventListener('click', e => { if (e.target === box) box.close(); });   // click the dark area to close
     })();
