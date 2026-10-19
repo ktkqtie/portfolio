@@ -199,13 +199,11 @@
         dot.style.opacity = 1;
       }
 
-      // Start level with the "Overview" heading, then stick near the top while scrolling
+      // Start level with the top of the hero image, then stick near the top while scrolling (matches Duckweather)
       const STICK_AT = 96;
       function position() {
-        const overviewLabel = sections[0].querySelector('.label') || sections[0];
-        const firstText = links[0].getBoundingClientRect().top - toc.getBoundingClientRect().top
-                          + parseFloat(getComputedStyle(links[0]).paddingTop);
-        const top = overviewLabel.getBoundingClientRect().top - firstText;
+        const start = document.querySelector('.case-hero');
+        const top = start.getBoundingClientRect().top;
         toc.style.top = Math.max(STICK_AT, top) + 'px';
       }
 
