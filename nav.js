@@ -25,6 +25,7 @@
   }
 
   links.forEach(link => link.addEventListener('click', e => {
+    if (link.target === '_blank') return;                       // opens in a new tab (resume): keep the dot where it is
     const href = link.getAttribute('href');
     if (href === '#') e.preventDefault();                       // page not built yet
     else if (!href.startsWith('#')) {
