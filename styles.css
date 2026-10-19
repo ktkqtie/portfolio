@@ -1007,13 +1007,13 @@ h1, h2, h3, .lede { text-wrap: balance; }
 /* Custom cursors: the little arrow and pointing-hand characters */
 :root {
   --cursor-default: url("/assets/cursors/arrow-32.png") 2 1, auto;
-  --cursor-pointer: url("/assets/cursors/hand-32.png") 5 1, pointer;
+  --cursor-pointer: url("/assets/cursors/hand-32.png") 4 1, pointer;
 }
 /* Sharper 2x versions on retina screens, where the browser supports it */
 @supports (cursor: image-set(url("/assets/cursors/arrow-32.png") 1x) 0 0, auto) {
   :root {
     --cursor-default: image-set(url("/assets/cursors/arrow-32.png") 1x, url("/assets/cursors/arrow-64.png") 2x) 2 1, auto;
-    --cursor-pointer: image-set(url("/assets/cursors/hand-32.png") 1x, url("/assets/cursors/hand-64.png") 2x) 5 1, pointer;
+    --cursor-pointer: image-set(url("/assets/cursors/hand-32.png") 1x, url("/assets/cursors/hand-64.png") 2x) 4 1, pointer;
   }
 }
 html, body { cursor: var(--cursor-default); }
