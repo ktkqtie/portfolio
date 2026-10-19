@@ -129,7 +129,7 @@ html { scroll-behavior: smooth; }
   height: 230px;
   transform: translateX(-50%);
   aspect-ratio: 826 / 1302;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
   -webkit-tap-highlight-color: transparent;
 }
 .duck .layer { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -403,7 +403,7 @@ html { scroll-behavior: smooth; }
   font: inherit;
   font-size: 12px;
   letter-spacing: 0.04em;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
   transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 .demo-rain svg { width: 15px; height: 15px; }
@@ -727,7 +727,7 @@ html { scroll-behavior: smooth; }
   font: inherit;
   font-size: 12px;
   letter-spacing: 0.04em;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
   transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 .chip:hover { color: var(--ink); border-color: var(--line-strong); }
@@ -746,7 +746,7 @@ html { scroll-behavior: smooth; }
   border-radius: 10px;
   overflow: hidden;
   background: var(--surface);
-  cursor: zoom-in;
+  cursor: var(--cursor-pointer);
 }
 .art-open img { display: block; width: 100%; height: auto; transition: transform 0.4s ease; }
 .art-open:hover img { transform: scale(1.025); }
@@ -773,7 +773,7 @@ html { scroll-behavior: smooth; }
 .lb-close, .lb-nav {
   display: grid; place-items: center;
   border: 0; background: rgba(255, 255, 255, 0.1); color: #fff;
-  border-radius: 50%; cursor: pointer;
+  border-radius: 50%; cursor: var(--cursor-pointer);
   transition: background 0.2s ease;
 }
 .lb-close:hover, .lb-nav:hover { background: rgba(255, 255, 255, 0.2); }
@@ -946,7 +946,7 @@ h1, h2, h3, .lede { text-wrap: balance; }
 @media (max-width: 720px) { .prose p.pull { font-size: 18px; } }
 /* Final poster: crisper corners, and it opens larger on click */
 .poster-frame img { border-radius: 4px; }
-.zoomable { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; }
+.zoomable { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: var(--cursor-pointer); }
 .zoomable img { transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .zoomable:hover img { transform: translateY(-3px); box-shadow: 0 16px 36px var(--shadow); }
 .zoomable:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 4px; }
@@ -1004,3 +1004,18 @@ h1, h2, h3, .lede { text-wrap: balance; }
 .signature path, :root[data-theme="dark"] .signature path { stroke: var(--ink); stroke-width: 8; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .signature path { stroke: var(--ink); } }
 @media (max-width: 720px) { .signature { width: 140px; } }
+/* Custom cursors: the little arrow and pointing-hand characters */
+:root {
+  --cursor-default: url("/assets/cursors/arrow-32.png") 2 1, auto;
+  --cursor-pointer: url("/assets/cursors/hand-32.png") 5 1, pointer;
+}
+/* Sharper 2x versions on retina screens, where the browser supports it */
+@supports (cursor: image-set(url("/assets/cursors/arrow-32.png") 1x) 0 0, auto) {
+  :root {
+    --cursor-default: image-set(url("/assets/cursors/arrow-32.png") 1x, url("/assets/cursors/arrow-64.png") 2x) 2 1, auto;
+    --cursor-pointer: image-set(url("/assets/cursors/hand-32.png") 1x, url("/assets/cursors/hand-64.png") 2x) 5 1, pointer;
+  }
+}
+html, body { cursor: var(--cursor-default); }
+a, button, summary, label[for], [role="button"], select, input[type="range"], input[type="checkbox"], input[type="radio"] { cursor: var(--cursor-pointer); }
+input[type="text"], input[type="email"], textarea { cursor: text; }
