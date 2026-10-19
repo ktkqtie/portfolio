@@ -114,8 +114,8 @@
       const strokes = [...sig.querySelectorAll('path')];
       const lens = strokes.map(p => Number(p.style.getPropertyValue('--len')));
       const total = lens.reduce((a, b) => a + b, 0);
-      const DURATION = 2300, PAUSE = 90;                  // whole signature, and a short pen lift between strokes
-      const HOLD = 1800, GAP = 500;                       // stay written, then rest before writing again
+      const DURATION = 1800, PAUSE = 70;                  // whole signature, and a short pen lift between strokes
+      const HOLD = 1500, GAP = 400;                       // stay written, then rest before writing again
       const ease = 'cubic-bezier(0.45, 0.05, 0.4, 1)';
       sig.classList.add('ready');
       // Draw each stroke in order (offset 1 → 0), hold, then erase along the same path (0 → -1)
