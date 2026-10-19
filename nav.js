@@ -60,38 +60,3 @@
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(start);
   addEventListener('resize', () => place(current(), false));
 })();
-
-// Custom cursor: a small circle that follows the mouse and grows over anything clickable.
-// Mouse and trackpad only; touch screens keep their normal behaviour.
-(() => {
-  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-  const ring = document.createElement('div');
-  ring.className = 'cursor-ring';
-  ring.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(ring);
-  document.documentElement.classList.add('has-cursor');
-
-  const CLICKABLE = 'a, button, [role="button"], label, summary, select, input[type="range"], .zoomable, .chip';
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let x = -100, y = -100, rx = x, ry = y, shown = false;
-
-  addEventListener('pointermove', e => {
-    if (e.pointerType !== 'mouse') return;
-    x = e.clientX; y = e.clientY;
-    if (!shown) { rx = x; ry = y; shown = true; ring.classList.add('on'); }
-    // Keep the ring above an open image viewer (dialogs sit on their own top layer)
-    const host = e.target.closest && e.target.closest('dialog[open]') || document.body;
-    if (ring.parentNode !== host) host.appendChild(ring);
-    ring.classList.toggle('hover', !!(e.target.closest && e.target.closest(CLICKABLE)));
-  }, { passive: true });
-  addEventListener('pointerdown', () => ring.classList.add('down'));
-  addEventListener('pointerup', () => ring.classList.remove('down'));
-  document.addEventListener('mouseleave', () => { ring.classList.remove('on'); shown = false; });
-
-  (function follow() {
-    const k = reduce ? 1 : 0.35;                       // light easing so it trails the pointer just a touch
-    rx += (x - rx) * k; ry += (y - ry) * k;
-    ring.style.transform = `translate(${rx}px, ${ry}px)`;
-    requestAnimationFrame(follow);
-  })();
-})();

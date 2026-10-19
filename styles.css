@@ -1064,19 +1064,3 @@ h1, h2, h3, .lede { text-wrap: balance; }
 .booth-panels { display: grid; grid-template-columns: 836fr 836fr 506fr; gap: 16px; margin-top: 40px; align-items: start; }
 .booth-panels img { display: block; width: 100%; height: auto; border-radius: 4px; }
 @media (max-width: 720px) { .booth-panels { gap: 8px; margin-top: 24px; } }
-/* Custom cursor (see nav.js): a small circle that grows over clickable things */
-.has-cursor, .has-cursor * { cursor: none !important; }
-.cursor-ring { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; opacity: 0; transition: opacity 0.2s ease; }
-.cursor-ring::before {
-  content: ''; position: absolute; left: 0; top: 0;
-  width: 12px; height: 12px; border-radius: 50%;
-  border: 1.5px solid var(--ink); background: transparent;
-  transform: translate(-50%, -50%);
-  transition: width 0.25s cubic-bezier(0.3, 1.4, 0.5, 1), height 0.25s cubic-bezier(0.3, 1.4, 0.5, 1), background 0.2s ease, border-color 0.2s ease;
-}
-.cursor-ring.on { opacity: 1; }
-.cursor-ring.hover::before { width: 40px; height: 40px; background: color-mix(in srgb, var(--ink) 8%, transparent); }
-.cursor-ring.down::before { width: 9px; height: 9px; }
-.cursor-ring.hover.down::before { width: 32px; height: 32px; }
-dialog .cursor-ring::before, .lightbox .cursor-ring::before { border-color: #fff; }
-dialog .cursor-ring.hover::before { background: rgba(255, 255, 255, 0.12); }
