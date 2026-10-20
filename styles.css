@@ -1073,3 +1073,4 @@ h1, h2, h3, .lede { text-wrap: balance; }
 .steps.big .step-n { font-size: 13px; }
 .steps.big p { font-size: 13px; }
 @media (max-width: 720px) { .steps.big { gap: 20px 12px; } }
+.art-caption small:only-child { text-align: left; }
