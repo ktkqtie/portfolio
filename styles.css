@@ -1,13 +1,15 @@
 :root {
-  --ink: #2b2b2b;
-  --muted: #7a7a7a;
-  --bg: #ffffff;
-  --surface: #f3f3f2;      /* placeholder boxes, cards, pills */
-  --faint: #b0b0ad;        /* "coming soon" labels */
-  --line: #d6d6d4;
-  --line-strong: #bdbdba;
-  --button: #ffffff;
-  --shadow: rgba(0, 0, 0, 0.07);
+  /* Soft neutral palette: pale grey, cool grey, taupe, warm grey, charcoal */
+  --ink: #3d3d3b;
+  --muted: #777775;
+  --bg: #ebebeb;
+  --surface: #e0e2e6;      /* placeholder boxes, cards, pills */
+  --faint: #98978f;        /* "coming soon" labels */
+  --line: #d3d3d1;
+  --line-strong: #c1b4aa;
+  --button: #f2f2f1;
+  --shadow: rgba(60, 55, 50, 0.08);
+  --accent: #7cb87f;       /* green: active-tab dot and small highlights */
   color-scheme: light;
 }
 
@@ -15,28 +17,30 @@
    prefers dark and nobody has pulled the string yet. Keep the two blocks identical. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --ink: #ecebe8;
-    --muted: #9b9a96;
-    --bg: #141413;
-    --surface: #222220;
-    --faint: #6c6b67;
-    --line: #3a3936;
-    --line-strong: #55534f;
-    --button: #1c1c1a;
-    --shadow: rgba(0, 0, 0, 0.4);
+    --ink: #ebebeb;
+    --muted: #a9a8a2;
+    --bg: #262625;
+    --surface: #323231;
+    --faint: #777775;
+    --line: #3e3e3c;
+    --line-strong: #5a5652;
+    --button: #2e2e2d;
+    --shadow: rgba(0, 0, 0, 0.35);
+    --accent: #7cb87f;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --ink: #ecebe8;
-  --muted: #9b9a96;
-  --bg: #141413;
-  --surface: #222220;
-  --faint: #6c6b67;
-  --line: #3a3936;
-  --line-strong: #55534f;
-  --button: #1c1c1a;
-  --shadow: rgba(0, 0, 0, 0.4);
+  --ink: #ebebeb;
+  --muted: #a9a8a2;
+  --bg: #262625;
+  --surface: #323231;
+  --faint: #777775;
+  --line: #3e3e3c;
+  --line-strong: #5a5652;
+  --button: #2e2e2d;
+  --shadow: rgba(0, 0, 0, 0.35);
+  --accent: #7cb87f;
   color-scheme: dark;
 }
 *, *::before, *::after { box-sizing: border-box; }
@@ -86,7 +90,7 @@ a { color: inherit; text-decoration: none; }
   height: 6px;
   margin-top: -3px;
   border-radius: 50%;
-  background: #7cb87f;
+  background: var(--accent);
   pointer-events: none;
   opacity: 0;
   transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.2s ease;
@@ -390,7 +394,7 @@ html { scroll-behavior: smooth; }
 .demo-stage img { height: 240px; width: auto; max-width: 100%; object-fit: contain; display: block; }
 .demo-temp { margin: 0; font-size: 56px; font-weight: 400; letter-spacing: -0.02em; line-height: 1; }
 .demo-range { margin: 6px 0 20px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
-.demo input[type="range"] { width: 100%; accent-color: #7cb87f; }
+.demo input[type="range"] { width: 100%; accent-color: var(--accent); }
 .demo-scale { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-top: 2px; }
 .demo-rain {
   display: inline-flex; align-items: center; gap: 6px;
@@ -546,7 +550,7 @@ html { scroll-behavior: smooth; }
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #7cb87f;
+  background: var(--accent);
   opacity: 0;
   pointer-events: none;
   transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.2s ease;
@@ -682,7 +686,7 @@ html { scroll-behavior: smooth; }
   width: 6px; height: 6px;
   margin: 0 7px 2px 0;
   border-radius: 50%;
-  background: #7cb87f;
+  background: var(--accent);
   vertical-align: middle;
 }
 .prose p.source { font-size: 11px; letter-spacing: 0.02em; color: var(--faint); }
@@ -893,7 +897,7 @@ html { scroll-behavior: smooth; }
 .numbered:has(ul) > li { display: grid; grid-row: span 5; grid-template-rows: subgrid; }
 .numbered:has(ul) > li > p { margin-bottom: 16px; font-size: 13.5px; color: var(--ink); }
 .numbered ul { margin: 0; padding: 0; }
-.numbered ul li::before { background: #7cb87f; }
+.numbered ul li::before { background: var(--accent); }
 @media (max-width: 720px) {
   .numbered:has(ul) { grid-template-rows: none; row-gap: 24px; }
   .numbered:has(ul) > li { display: block; }
@@ -1076,3 +1080,14 @@ h1, h2, h3, .lede { text-wrap: balance; }
 .art-caption small:only-child { text-align: left; }
 /* About photos: sharp corners like the art gallery */
 .photo, .oc-photos li { border-radius: 2px; }
+/* Duck line drawings in dark mode: swap to a cream-filled "sticker" version instead of inverting
+   (inverting turned the eyes white, which looked spooky) */
+.only-dark { display: none !important; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .only-light { display: none !important; }
+  :root:not([data-theme="light"]) .only-dark { display: block !important; }
+}
+:root[data-theme="dark"] .only-light { display: none !important; }
+:root[data-theme="dark"] .only-dark { display: block !important; }
+.frame.sketch.base img { filter: none !important; }
+.frame.sketch img.no-invert { filter: none !important; }
