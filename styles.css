@@ -1064,3 +1064,12 @@ h1, h2, h3, .lede { text-wrap: balance; }
 .booth-panels { display: grid; grid-template-columns: 836fr 836fr 506fr; gap: 16px; margin-top: 40px; align-items: start; }
 .booth-panels img { display: block; width: 100%; height: auto; border-radius: 4px; }
 @media (max-width: 720px) { .booth-panels { gap: 8px; margin-top: 24px; } }
+/* Totten stages: two per row, full drawing visible, click to view larger */
+.steps.big { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 28px; margin-top: 12px; }
+.steps.big figure { aspect-ratio: 720 / 1036; border-radius: 6px; margin-bottom: 12px; }
+.steps.big .zoomable { height: 100%; }
+.steps.big .zoomable img { border-radius: 0; }
+.steps.big .zoomable:hover img { transform: scale(1.02); box-shadow: none; }
+.steps.big .step-n { font-size: 13px; }
+.steps.big p { font-size: 13px; }
+@media (max-width: 720px) { .steps.big { gap: 20px 12px; } }

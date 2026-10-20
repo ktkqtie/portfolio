@@ -123,11 +123,11 @@
       </div>
 
       <p class="mini-label steps-title">Stages</p>
-      <ol class="steps">
-        <li><figure><img src="assets/totten/stage-sketch.jpg" alt="Rough pencil sketch of runners in a park" loading="lazy"></figure><span class="step-n">Sketch</span><p>Blocking out the composition.</p></li>
-        <li><figure><img src="assets/totten/stage-inking.jpg" alt="Line art being inked over the faded sketch" loading="lazy"></figure><span class="step-n">Inking</span><p>Clean line art over the sketch.</p></li>
-        <li><figure><img src="assets/totten/poster-frame.jpg" alt="Finished black line art with lettering" loading="lazy"></figure><span class="step-n">Line art</span><p>Details and lettering complete.</p></li>
-        <li><figure class="dark"><img src="assets/totten/final-art.jpg" alt="Final illustration in gold on black" loading="lazy"></figure><span class="step-n">Colour</span><p>Gold on black for the shirt.</p></li>
+      <ol class="steps big">
+        <li><figure><button type="button" class="zoomable" data-full="assets/totten/stage-sketch.jpg" aria-label="View this stage larger"><img src="assets/totten/stage-sketch.jpg" alt="Rough pencil sketch of runners in a park" loading="lazy"></button></figure><span class="step-n">Sketch</span><p>Blocking out the composition.</p></li>
+        <li><figure><button type="button" class="zoomable" data-full="assets/totten/stage-inking.jpg" aria-label="View this stage larger"><img src="assets/totten/stage-inking.jpg" alt="Line art being inked over the faded sketch" loading="lazy"></button></figure><span class="step-n">Inking</span><p>Clean line art over the sketch.</p></li>
+        <li><figure><button type="button" class="zoomable" data-full="assets/totten/poster-frame.jpg" aria-label="View this stage larger"><img src="assets/totten/poster-frame.jpg" alt="Finished black line art with lettering" loading="lazy"></button></figure><span class="step-n">Line art</span><p>Details and lettering complete.</p></li>
+        <li><figure class="dark"><button type="button" class="zoomable" data-full="assets/totten/final-art.jpg" aria-label="View this stage larger"><img src="assets/totten/final-art.jpg" alt="Final illustration in gold on black" loading="lazy"></button></figure><span class="step-n">Colour</span><p>Gold on black for the shirt.</p></li>
       </ol>
     </section>
 
@@ -164,9 +164,56 @@
         </span>
       </a>
     </div>
+
+    <!-- Image viewer: click the poster to see it up close -->
+    <dialog class="lightbox zoom-view" id="zoomView" aria-label="Image viewer">
+      <button type="button" class="lb-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <button type="button" class="lb-nav lb-prev" aria-label="Previous image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <img id="zoomImg" src="" alt="">
+      <button type="button" class="lb-nav lb-next" aria-label="Next image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </dialog>
   </main>
 
   <script src="nav.js"></script>
+  <script>
+    // ---- Click an image to see it larger; arrows step through the other images in the same group ----
+    (() => {
+      const box = document.getElementById('zoomView');
+      const img = document.getElementById('zoomImg');
+      if (!box) return;
+      const prev = box.querySelector('.lb-prev'), next = box.querySelector('.lb-next');
+      let group = [], current = 0;
+      function show(i) {
+        current = (i + group.length) % group.length;
+        const btn = group[current];
+        img.src = btn.dataset.full;
+        img.alt = btn.querySelector('img').alt;
+      }
+      document.querySelectorAll('.zoomable').forEach(btn => btn.addEventListener('click', () => {
+        // A group is the set of clickable images in the same list (carousel slides, packets, iterations)
+        const list = btn.closest('ul, ol');
+        group = list ? [...list.querySelectorAll('.zoomable')] : [btn];
+        box.classList.toggle('single', group.length < 2);
+        show(group.indexOf(btn));
+        box.showModal();
+      }));
+      prev.addEventListener('click', () => show(current - 1));
+      next.addEventListener('click', () => show(current + 1));
+      box.addEventListener('keydown', e => {
+        if (group.length < 2) return;
+        if (e.key === 'ArrowLeft') show(current - 1);
+        if (e.key === 'ArrowRight') show(current + 1);
+      });
+      box.querySelector('.lb-close').addEventListener('click', () => box.close());
+      box.addEventListener('click', e => { if (e.target === box) box.close(); });   // click the dark area to close
+    })();
+  </script>
   <script>
     // ---- Time-lapse: plays automatically, muted and looping (still with controls for reduce motion) ----
     (() => {
