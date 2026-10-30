@@ -10,11 +10,11 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="lamp/lamp.css">
   <script>
-    // Apply a saved light/dark choice (from the lamp) before the page appears, so it doesn't flash
+    // Start in light mode (lamp on); apply a saved lamp choice before the page appears so it doesn't flash
     try {
       const theme = localStorage.getItem("lamp.theme");
-      if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
-    } catch {}
+      document.documentElement.dataset.theme = (theme === "dark") ? "dark" : "light";   // light (lamp on) unless the visitor switched it off
+    } catch { document.documentElement.dataset.theme = "light"; }
   </script>
 </head>
 <body>
@@ -52,7 +52,7 @@
   </header>
 
   <main>
-    <!-- Hero: lamp + waving duck (filler until the interactive piece is ready) -->
+    <!-- Hero: lamp hanging over the pond illustration -->
     <section class="hero wrap">
       <div class="placeholder">
         <!-- Pull-string lamp (from duckweather): switches the site between light and dark -->
@@ -66,22 +66,8 @@
             <path class="filament" d="M18.5 18v13M25.5 18v13M18.5 31h7M18.5 31q-2.5 6 1.2 7.5 1.8-3.5-1.2-7.5M22 31q-1.8 7 0 8 1.8-1 0-8M25.5 31q2.5 6-1.2 7.5-1.8-3.5 1.2-7.5"/>
           </svg>
         </button>
-        <div class="duck" id="duck" role="img" aria-label="A yellow duck in blue overalls waving hello" tabindex="0">
-          <div class="shadow" id="duckShadow"></div>
-          <div class="layer rig" id="duckIdleBody">
-            <div class="layer rig" id="duckWaveBody">
-              <!-- Whole arm sits behind the body so the shoulder joint stays tucked under the strap -->
-              <div class="layer shoulder" id="duckIdleShoulder">
-                <div class="layer shoulder" id="duckWaveShoulder">
-                  <img class="layer arm" id="duckWaveArm" src="assets/duck-wave/duck-arm.png" alt="">
-                  <img class="layer" src="assets/duck-wave/duck-sleeve.png" alt="">
-                </div>
-              </div>
-              <img class="layer" src="assets/duck-wave/duck-body.png" alt="">
-              <img class="layer eyes" id="duckEyes" src="assets/duck-wave/duck-eyes.png" alt="">
-            </div>
-          </div>
-        </div>
+        <img class="hero-art" draggable="false" src="assets/hero/pond-duck.jpg" alt="Illustration of a little yellow duck with a leaf hat floating in a green pond, surrounded by hanging willow leaves, water plants and fireflies" width="2000" height="1390">
+        <div class="ripples" id="ripples" aria-hidden="true"></div>
       </div>
       <a class="scroll-cue" href="#work" aria-label="Scroll to projects">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -152,103 +138,67 @@
   </main>
   <script src="nav.js"></script>
   <script src="lamp/lamp.js"></script>
-
   <script>
-    // ---- Waving duck ----
+    // ---- Pond: tap or click the water to send out ripples ----
     (() => {
-      const $ = id => document.getElementById(id);
-      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const sine = 'cubic-bezier(0.37, 0, 0.63, 1)';
+      const stage = document.querySelector('.placeholder');
+      const layer = document.getElementById('ripples');
+      if (!stage || !layer) return;
+      const NS = 'http://www.w3.org/2000/svg';
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // Idle: gentle breathing + a lazy arm sway, so it's never fully still
-      if (!reduceMotion) {
-        $('duckIdleBody').animate(
-          [{ transform: 'translateY(0) scaleY(1)' }, { transform: 'translateY(-0.6%) scaleY(1.012)' }],
-          { duration: 1800, iterations: Infinity, direction: 'alternate', easing: sine }
-        );
-        $('duckShadow').animate(
-          [{ transform: 'scaleX(1)', opacity: 1 }, { transform: 'scaleX(0.94)', opacity: 0.8 }],
-          { duration: 1800, iterations: Infinity, direction: 'alternate', easing: sine }
-        );
-        $('duckIdleShoulder').animate(
-          [{ transform: 'rotate(0deg)' }, { transform: 'rotate(-2deg)' }],
-          { duration: 2200, iterations: Infinity, direction: 'alternate', easing: sine, delay: 300 }
-        );
+      function ripple(x, y, ambient) {
+        const r = document.createElement('div');
+        r.className = ambient ? 'ripple ambient' : 'ripple';
+        r.style.left = x + 'px';
+        r.style.top = y + 'px';
+        const svg = document.createElementNS(NS, 'svg');
+        svg.setAttribute('viewBox', '0 0 200 200');
+        // Three loose, broken rings like the hand-drawn ones around the duck
+        [0, 1, 2].forEach(i => {
+          const c = document.createElementNS(NS, 'circle');
+          c.setAttribute('cx', 100); c.setAttribute('cy', 100); c.setAttribute('r', 96 - i * 4);
+          c.setAttribute('pathLength', 100);
+          const gap = 8 + Math.random() * 14;
+          c.setAttribute('stroke-dasharray', `${30 + Math.random() * 25} ${gap} ${18 + Math.random() * 20} ${gap}`);
+          c.style.transform = `rotate(${Math.random() * 360}deg)`;
+          c.style.animationDelay = (i * 0.22) + 's';
+          c.classList.add(i === 1 ? 'shine' : 'ring');
+          svg.appendChild(c);
+        });
+        r.appendChild(svg);
+        layer.appendChild(r);
+        setTimeout(() => r.remove(), reduce ? 900 : ambient ? 4200 : 2600);
       }
 
-      // Blink
-      function blink() {
-        return $('duckEyes').animate(
-          [{ transform: 'scaleY(1)' }, { transform: 'scaleY(0.08)', offset: 0.45 }, { transform: 'scaleY(1)' }],
-          { duration: 170, easing: 'ease-in-out' }
-        );
-      }
-      function blinkLoop() {
-        setTimeout(() => { blink(); blinkLoop(); }, 2400 + Math.random() * 3200);
-      }
-      if (!reduceMotion) blinkLoop();
-
-      // Wave hello
-      let waving = false;
-      function wave() {
-        if (waving) return;
-        waving = true;
-        const duration = 2400;
-        const lift = 'cubic-bezier(0.3, 0, 0.25, 1.2)';
-
-        // Shoulder: the whole arm (sleeve included) lifts out to the side with a little shrug
-        const shoulder = $('duckWaveShoulder').animate([
-          { transform: 'translateY(0) rotate(0deg)',       offset: 0,    easing: lift },
-          { transform: 'translateY(-1.2%) rotate(-80deg)', offset: 0.22, easing: sine },
-          { transform: 'translateY(-1%) rotate(-74deg)',   offset: 0.36, easing: sine },
-          { transform: 'translateY(-1.2%) rotate(-82deg)', offset: 0.5,  easing: sine },
-          { transform: 'translateY(-1%) rotate(-74deg)',   offset: 0.64, easing: sine },
-          { transform: 'translateY(-1.1%) rotate(-79deg)', offset: 0.76, easing: 'cubic-bezier(0.45, 0, 0.55, 1)' },
-          { transform: 'translateY(0) rotate(3deg)',       offset: 0.94, easing: sine },
-          { transform: 'translateY(0) rotate(0deg)',       offset: 1 }
-        ], { duration });
-
-        // Elbow: the forearm trails the shoulder, bends up toward the head, and does the waving
-        $('duckWaveArm').animate([
-          { transform: 'rotate(0deg)',   offset: 0,    easing: sine },
-          { transform: 'rotate(0deg)',   offset: 0.05, easing: lift },
-          { transform: 'rotate(-72deg)', offset: 0.26, easing: sine },
-          { transform: 'rotate(-42deg)', offset: 0.38, easing: sine },
-          { transform: 'rotate(-78deg)', offset: 0.52, easing: sine },
-          { transform: 'rotate(-44deg)', offset: 0.66, easing: sine },
-          { transform: 'rotate(-66deg)', offset: 0.78, easing: 'cubic-bezier(0.45, 0, 0.55, 1)' },
-          { transform: 'rotate(4deg)',   offset: 0.96, easing: sine },
-          { transform: 'rotate(0deg)',   offset: 1 }
-        ], { duration });
-
-        // Body: tiny dip before lifting, lean into the wave, sway along with it
-        $('duckWaveBody').animate([
-          { transform: 'rotate(0deg) scaleY(1)',        offset: 0,    easing: sine },
-          { transform: 'rotate(0.4deg) scaleY(0.985)',  offset: 0.07, easing: sine },
-          { transform: 'rotate(-2deg) scaleY(1.01)',    offset: 0.22, easing: sine },
-          { transform: 'rotate(-1.3deg) scaleY(1)',     offset: 0.34, easing: sine },
-          { transform: 'rotate(-2.2deg) scaleY(1.005)', offset: 0.46, easing: sine },
-          { transform: 'rotate(-1.3deg) scaleY(1)',     offset: 0.58, easing: sine },
-          { transform: 'rotate(-2deg) scaleY(1.005)',   offset: 0.7,  easing: sine },
-          { transform: 'rotate(0.5deg) scaleY(1)',      offset: 0.93, easing: sine },
-          { transform: 'rotate(0deg) scaleY(1)',        offset: 1 }
-        ], { duration });
-
-        setTimeout(blink, duration * 0.18);
-        shoulder.finished.then(() => { waving = false; });
+      // Where the duck sits on screen (the picture is cropped with object-fit: cover)
+      const art = document.querySelector('.hero-art');
+      const DUCK = { x: 0.47, y: 0.52 };                 // position of the duck in the original illustration
+      function duckPoint() {
+        const W = stage.clientWidth, H = stage.clientHeight;
+        const iw = art.naturalWidth || 2000, ih = art.naturalHeight || 1390;
+        const k = Math.max(W / iw, H / ih), dw = iw * k, dh = ih * k;
+        return { x: (W - dw) * 0.5 + DUCK.x * dw, y: (H - dh) * 0.52 + DUCK.y * dh };
       }
 
-      const duck = $('duck');
-      duck.addEventListener('click', wave);
-      duck.addEventListener('mouseenter', wave);
-      duck.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); wave(); } });
+      // A gentle ripple drifts out from the duck every few seconds, while the pond is on screen
+      let timer = null;
+      const tick = () => { const p = duckPoint(); ripple(p.x, p.y, true); };
+      const startAmbient = () => { if (!timer) { tick(); timer = setInterval(tick, 2800); } };
+      const stopAmbient = () => { clearInterval(timer); timer = null; };
+      // Turned off for now (waiting on the layered duck). To bring it back, uncomment:
+      // if (!reduce) {
+      //   new IntersectionObserver(([e]) => (e.isIntersecting && !document.hidden) ? startAmbient() : stopAmbient(), { threshold: 0.2 }).observe(stage);
+      //   document.addEventListener('visibilitychange', () => document.hidden ? stopAmbient() : startAmbient());
+      // }
 
-      // Say hi once when the page opens
-      if (!reduceMotion) {
-        Promise.all([...duck.querySelectorAll('img')].map(img => img.decode().catch(() => {})))
-          .then(() => setTimeout(wave, 500));
-      }
+      stage.addEventListener('pointerdown', e => {
+        if (e.target.closest('.lamp')) return;          // the lamp keeps its own job
+        const box = stage.getBoundingClientRect();
+        ripple(e.clientX - box.left, e.clientY - box.top);
+      });
     })();
   </script>
+
 </body>
 </html>

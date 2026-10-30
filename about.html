@@ -10,11 +10,11 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="lamp/lamp.css">
   <script>
-    // Apply a saved light/dark choice (from the lamp) before the page appears, so it doesn't flash
+    // Start in light mode (lamp on); apply a saved lamp choice before the page appears so it doesn't flash
     try {
       const theme = localStorage.getItem("lamp.theme");
-      if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
-    } catch {}
+      document.documentElement.dataset.theme = (theme === "dark") ? "dark" : "light";   // light (lamp on) unless the visitor switched it off
+    } catch { document.documentElement.dataset.theme = "light"; }
   </script>
 </head>
 <body>
