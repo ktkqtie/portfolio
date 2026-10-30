@@ -1139,3 +1139,36 @@ h1, h2, h3, .lede { text-wrap: balance; }
 .ripple.ambient circle.shine { stroke: rgba(214, 238, 230, 0.4); stroke-width: 1.3; }
 @keyframes ripple-ambient { 0% { scale: 0.2; opacity: 0; } 15% { opacity: 1; } 100% { scale: 1; opacity: 0; } }
 .ripple.ambient circle { animation-name: ripple-ambient; }
+/* Home: the pond fills the first screen, centred, with the arrow just below it */
+.hero {
+  --nav-h: 64px;
+  min-height: calc(100svh - var(--nav-h));
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  padding-top: 0; padding-bottom: 12px;
+}
+.hero.wrap { max-width: 1040px; }
+.hero .placeholder { width: min(100%, calc((100svh - var(--nav-h) - 96px) * 2000 / 1100)); }
+.hero .scroll-cue { margin-top: 18px; animation: cue-bob 2.4s ease-in-out infinite; }
+@keyframes cue-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+@media (prefers-reduced-motion: reduce) { .hero .scroll-cue { animation: none; } }
+@media (max-width: 720px) {
+  .hero { --nav-h: 96px; }
+  .hero .placeholder { width: 100%; }
+}
+/* Lamp cord fades in from the top so it melts into the cloudy edge of the pond */
+.hero .lamp-cord { -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 70%); mask-image: linear-gradient(to bottom, transparent 0%, #000 70%); }
+/* Fireflies glow when the lamp is off: soft lights placed over the painted ones, gently twinkling.
+   The layer matches how the picture is cropped (cover, centred at 52%). */
+.fireflies { position: absolute; left: 0; width: 100%; aspect-ratio: 2000 / 1390; top: 52%; transform: translateY(-52%); opacity: 0; transition: opacity 0.8s ease; }
+.fireflies span {
+  position: absolute; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%;
+  background: #fff6c8;
+  box-shadow: 0 0 6px 2px rgba(255, 230, 140, 0.95), 0 0 18px 7px rgba(255, 205, 90, 0.5), 0 0 40px 14px rgba(255, 190, 70, 0.18);
+  scale: var(--s);
+  animation: firefly var(--t) ease-in-out var(--d) infinite;
+}
+@keyframes firefly { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+:root[data-theme="dark"] .fireflies { opacity: 1; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .fireflies { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .fireflies span { animation: none; } }
+@media (max-width: 720px) { .fireflies { top: 0; height: 100%; width: auto; left: 50%; transform: translateX(-50%); } }
