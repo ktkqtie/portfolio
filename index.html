@@ -66,8 +66,50 @@
             <path class="filament" d="M18.5 18v13M25.5 18v13M18.5 31h7M18.5 31q-2.5 6 1.2 7.5 1.8-3.5-1.2-7.5M22 31q-1.8 7 0 8 1.8-1 0-8M25.5 31q2.5 6-1.2 7.5-1.8-3.5 1.2-7.5"/>
           </svg>
         </button>
-        <img class="hero-art" draggable="false" src="assets/hero/pond-duck.jpg" alt="Illustration of a little yellow duck with a leaf hat floating in a green pond, surrounded by hanging willow leaves, water plants and fireflies" width="2000" height="1390">
-        <div class="ripples" id="ripples" aria-hidden="true"><div class="fireflies"><span style="left:88.45%;top:7.41%;--s:1;--d:0.71s;--t:3.38s"></span><span style="left:35.13%;top:23.71%;--s:1.25;--d:1.11s;--t:3.49s"></span><span style="left:34.13%;top:26.67%;--s:1;--d:1.88s;--t:2.52s"></span><span style="left:32.36%;top:32.24%;--s:1;--d:0.04s;--t:3.91s"></span><span style="left:70.4%;top:60.92%;--s:1.25;--d:0.78s;--t:2.82s"></span><span style="left:74.98%;top:61.53%;--s:1.25;--d:2.99s;--t:3.25s"></span><span style="left:68.11%;top:64.64%;--s:1.25;--d:2.51s;--t:3.26s"></span><span style="left:15.42%;top:68.91%;--s:1.6;--d:1.92s;--t:2.67s"></span><span style="left:12.86%;top:70.27%;--s:1.25;--d:1.90s;--t:3.96s"></span><span style="left:69.33%;top:73.83%;--s:1;--d:1.57s;--t:3.73s"></span><span style="left:15.81%;top:74.58%;--s:1.25;--d:2.01s;--t:2.52s"></span><span style="left:8.31%;top:74.92%;--s:1.25;--d:2.27s;--t:3.46s"></span><span style="left:68.21%;top:76.21%;--s:1;--d:0.90s;--t:2.46s"></span><span style="left:17.08%;top:76.59%;--s:1;--d:2.60s;--t:3.25s"></span><span style="left:63.86%;top:78.83%;--s:1.25;--d:2.16s;--t:3.98s"></span><span style="left:66.23%;top:79.36%;--s:1;--d:2.14s;--t:4.06s"></span><span style="left:67.61%;top:81.62%;--s:1;--d:1.18s;--t:3.84s"></span><span style="left:92.62%;top:84.08%;--s:1;--d:1.33s;--t:4.08s"></span><span style="left:93.55%;top:86.23%;--s:1.25;--d:2.64s;--t:2.58s"></span><span style="left:92.23%;top:89.58%;--s:1.6;--d:0.41s;--t:2.79s"></span></div></div>
+        <img class="hero-art" draggable="false" src="assets/hero/pond-scene.jpg" alt="Illustration of a little yellow duck with a leaf hat floating in a green pond, surrounded by hanging willow leaves, water plants and fireflies" width="2000" height="1390">
+        <canvas class="hero-art water" id="water" aria-hidden="true" hidden></canvas>
+        <div class="ripples" id="ripples" aria-hidden="true"><div class="dapples"><i></i><i></i></div><div class="fireflies"><span style="left:88.45%;top:7.41%;--s:1;--d:0.71s;--t:3.38s"></span><span style="left:35.13%;top:23.71%;--s:1.25;--d:1.11s;--t:3.49s"></span><span style="left:34.13%;top:26.67%;--s:1;--d:1.88s;--t:2.52s"></span><span style="left:32.36%;top:32.24%;--s:1;--d:0.04s;--t:3.91s"></span><span style="left:70.4%;top:60.92%;--s:1.25;--d:0.78s;--t:2.82s"></span><span style="left:74.98%;top:61.53%;--s:1.25;--d:2.99s;--t:3.25s"></span><span style="left:68.11%;top:64.64%;--s:1.25;--d:2.51s;--t:3.26s"></span><span style="left:15.42%;top:68.91%;--s:1.6;--d:1.92s;--t:2.67s"></span><span style="left:12.86%;top:70.27%;--s:1.25;--d:1.90s;--t:3.96s"></span><span style="left:69.33%;top:73.83%;--s:1;--d:1.57s;--t:3.73s"></span><span style="left:15.81%;top:74.58%;--s:1.25;--d:2.01s;--t:2.52s"></span><span style="left:8.31%;top:74.92%;--s:1.25;--d:2.27s;--t:3.46s"></span><span style="left:68.21%;top:76.21%;--s:1;--d:0.90s;--t:2.46s"></span><span style="left:17.08%;top:76.59%;--s:1;--d:2.60s;--t:3.25s"></span><span style="left:63.86%;top:78.83%;--s:1.25;--d:2.16s;--t:3.98s"></span><span style="left:66.23%;top:79.36%;--s:1;--d:2.14s;--t:4.06s"></span><span style="left:67.61%;top:81.62%;--s:1;--d:1.18s;--t:3.84s"></span><span style="left:92.62%;top:84.08%;--s:1;--d:1.33s;--t:4.08s"></span><span style="left:93.55%;top:86.23%;--s:1.25;--d:2.64s;--t:2.58s"></span><span style="left:92.23%;top:89.58%;--s:1.6;--d:0.41s;--t:2.79s"></span></div></div>
+        <!-- The duck, in separate pieces so it can bob, paddle and make snow angels -->
+        <div class="pond-stage" aria-hidden="true">
+          <!-- Little plants floating on the water: they bob when tapped or when a ripple passes under them -->
+          <img class="floater" src="assets/hero/floaters/f1.webp" alt="" draggable="false" style="left:69.050%;top:25.683%;width:4.150%">
+          <img class="floater" src="assets/hero/floaters/f2.webp" alt="" draggable="false" style="left:57.950%;top:27.338%;width:3.900%">
+          <img class="floater" src="assets/hero/floaters/f3.webp" alt="" draggable="false" style="left:36.950%;top:33.453%;width:4.800%">
+          <img class="floater" src="assets/hero/floaters/f4.webp" alt="" draggable="false" style="left:63.750%;top:42.230%;width:3.850%">
+          <img class="floater" src="assets/hero/floaters/f5.webp" alt="" draggable="false" style="left:64.800%;top:49.856%;width:1.800%">
+          <img class="floater" src="assets/hero/floaters/f6.webp" alt="" draggable="false" style="left:27.550%;top:53.309%;width:3.600%">
+          <img class="floater" src="assets/hero/floaters/f7.webp" alt="" draggable="false" style="left:22.850%;top:56.403%;width:9.950%">
+          <img class="floater" src="assets/hero/floaters/f8.webp" alt="" draggable="false" style="left:10.450%;top:60.935%;width:5.400%">
+          <img class="floater" src="assets/hero/floaters/f9.webp" alt="" draggable="false" style="left:76.550%;top:61.367%;width:6.950%">
+          <img class="floater" src="assets/hero/floaters/f10.webp" alt="" draggable="false" style="left:20.250%;top:61.439%;width:3.250%">
+          <img class="floater" src="assets/hero/floaters/f11.webp" alt="" draggable="false" style="left:83.100%;top:64.101%;width:4.250%">
+          <img class="floater" src="assets/hero/floaters/f12.webp" alt="" draggable="false" style="left:35.900%;top:69.424%;width:4.050%">
+          <img class="floater" src="assets/hero/floaters/f13.webp" alt="" draggable="false" style="left:41.500%;top:70.935%;width:3.250%">
+          <img class="floater" src="assets/hero/floaters/f14.webp" alt="" draggable="false" style="left:45.700%;top:71.439%;width:3.350%">
+          <img class="floater" src="assets/hero/floaters/f15.webp" alt="" draggable="false" style="left:16.800%;top:74.460%;width:8.700%">
+          <img class="floater" src="assets/hero/floaters/f16.webp" alt="" draggable="false" style="left:51.100%;top:75.612%;width:14.600%">
+          <img class="floater" src="assets/hero/floaters/f17.webp" alt="" draggable="false" style="left:75.450%;top:89.137%;width:4.300%">
+          <img class="floater" src="assets/hero/floaters/f18.webp" alt="" draggable="false" style="left:90.700%;top:95.252%;width:5.550%">
+          <img class="duck-part plants" src="assets/hero/branches/plants.webp" alt="" draggable="false" style="left:52.350%;top:60.432%;width:9.900%">
+          <div class="pond-duck" id="duck">
+            <img class="duck-part body" src="assets/hero/duck/duck-body.webp" alt="" draggable="false" style="left:39.703%;top:40.183%;width:16.102%">
+            <img class="duck-part foot-l" src="assets/hero/duck/left-foot.webp" alt="" draggable="false" style="left:40.424%;top:49.939%;width:4.364%">
+            <img class="duck-part foot-r" src="assets/hero/duck/right-foot.webp" alt="" draggable="false" style="left:44.873%;top:58.598%;width:6.780%">
+            <img class="duck-part wing-l" src="assets/hero/duck/left-wing.webp" alt="" draggable="false" style="left:39.449%;top:46.646%;width:5.975%">
+            <img class="duck-part wing-r" src="assets/hero/duck/right-wing.webp" alt="" draggable="false" style="left:49.619%;top:54.085%;width:4.280%">
+          </div>
+        </div>
+        <!-- Branches hanging over the pond, each swaying from where it's attached -->
+        <div class="ripples" aria-hidden="true"><div class="pond-stage branches">
+          <img class="branch" data-sway="1.0" src="assets/hero/branches/willow-left-back.webp" alt="" draggable="false" style="left:14.300%;top:0%;width:19.050%;transform-origin:11.5% 0%">
+          <img class="branch" data-sway="1.2" src="assets/hero/branches/branch-right-top.webp" alt="" draggable="false" style="left:71.000%;top:0%;width:16.100%;transform-origin:87% 0%">
+          <img class="branch" data-sway="0.8" src="assets/hero/branches/branch-right.webp" alt="" draggable="false" style="left:64.050%;top:19.568%;width:34.950%;transform-origin:100% 12.2%">
+          <img class="branch" data-sway="1.2" src="assets/hero/branches/willow-left.webp" alt="" draggable="false" style="left:12.950%;top:0%;width:15.750%;transform-origin:22.5% 0%">
+          <img class="branch" data-sway="1.6" src="assets/hero/branches/willow-centre.webp" alt="" draggable="false" style="left:39.800%;top:0%;width:10.250%;transform-origin:36.1% 0%">
+          <img class="branch" data-sway="0.9" src="assets/hero/branches/ivy.webp" alt="" draggable="false" style="left:48.150%;top:0%;width:15.900%;transform-origin:43.1% 0%">
+        </div></div>
+        <!-- Falling leaves land on top of everything, the duck included -->
+        <div class="ripples leaves" id="leaves" aria-hidden="true"></div>
       </div>
       <a class="scroll-cue" href="#work" aria-label="Scroll to projects">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -147,53 +189,437 @@
       const NS = 'http://www.w3.org/2000/svg';
       const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+      // One brush stroke along a wobbly circle: thin at both ends, full in the middle
+      function brushArc(rad, from, len, width, w1, w2) {
+        const N = 36, outer = [], inner = [];
+        for (let j = 0; j <= N; j++) {
+          const u = j / N, th = from + len * u;
+          const rr = rad * (1 + 0.022 * Math.sin(2 * th + w1) + 0.014 * Math.sin(3 * th + w2));
+          const half = width / 2 * Math.pow(Math.sin(Math.PI * u), 0.75);
+          outer.push([100 + (rr + half) * Math.cos(th), 100 + (rr + half) * Math.sin(th)]);
+          inner.push([100 + (rr - half) * Math.cos(th), 100 + (rr - half) * Math.sin(th)]);
+        }
+        const pts = outer.concat(inner.reverse()).map(q => q[0].toFixed(1) + ' ' + q[1].toFixed(1));
+        const path = document.createElementNS(NS, 'path');
+        path.setAttribute('d', 'M' + pts.join('L') + 'Z');
+        return path;
+      }
+
+      // Spread a ring out on 20 held frames a second, so the water feels hand-animated too
+      function heldFrames(g, dur, delay) {
+        const n = Math.round(dur * 20), frames = [];
+        for (let j = 0; j <= n; j++) {
+          const u = j / n, e = 1 - Math.pow(1 - u, 2.6);       // fast at first, then slowing as it widens
+          const fade = u < 0.1 ? u / 0.1 : u < 0.6 ? 1 - (u - 0.1) / 0.5 * 0.25 : 0.75 * (1 - (u - 0.6) / 0.4);
+          frames.push({ scale: String(0.15 + 0.85 * e), opacity: fade, easing: 'steps(1, end)' });
+        }
+        g.animate(frames, { duration: dur * 1000, delay: delay * 1000, fill: 'both' });
+      }
+
+      const waves = [];                                    // every ripple on the pond (x, y in the pond's px), for things floating on it
+
+      // ---- Water: the pond is redrawn with WebGL so each ripple bends the picture under it, like real water.
+      // Only the water is distorted; the duck, branches and fireflies sit above it. Falls back to the plain picture.
+      const water = (() => {
+        const canvas = document.getElementById('water'), img = document.querySelector('img.hero-art');
+        const gl = canvas.getContext('webgl', { premultipliedAlpha: false, antialias: false });
+        if (!gl || reduce) return null;
+        const MAX = 32;
+        const vs = 'attribute vec2 a; varying vec2 v; void main() { v = a * 0.5 + 0.5; v.y = 1.0 - v.y; gl_Position = vec4(a, 0.0, 1.0); }';
+        const fs = `precision mediump float;
+          uniform sampler2D img; uniform vec2 res, imgSize; uniform float now, dpr;
+          uniform vec4 rip[${MAX}]; uniform vec2 ripSize[${MAX}];
+          varying vec2 v;
+          void main() {
+            vec2 p = v * res, disp = vec2(0.0); float light = 0.0;
+            for (int i = 0; i < ${MAX}; i++) {
+              vec4 r = rip[i];
+              if (r.w <= 0.0) continue;
+              float u = (now - r.z) / ripSize[i].y;
+              if (u < 0.0 || u >= 1.0) continue;
+              float rad = ripSize[i].x * (1.0 - pow(1.0 - u, 2.6));          // spreads like the drawn rings
+              vec2 d = p - r.xy; float dist = length(d) + 0.001, x = (dist - rad) / dpr;
+              float wave = sin(x * 0.55) * exp(-x * x / 140.0) * (1.0 - u) * r.w * dpr;
+              disp += d / dist * wave; light += wave / dpr;
+            }
+            float s = max(res.x / imgSize.x, res.y / imgSize.y);
+            vec2 size = imgSize * s, off = (res - size) * vec2(0.5, 0.52);   // same crop as the picture (cover, 52%)
+            vec4 c = texture2D(img, (p + disp - off) / size);
+            gl_FragColor = vec4(c.rgb * (1.0 + light * 0.03), 1.0);
+          }`;
+        const sh = (type, src) => { const o = gl.createShader(type); gl.shaderSource(o, src); gl.compileShader(o); return o; };
+        const prog = gl.createProgram();
+        gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(prog);
+        if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return null;
+        gl.useProgram(prog);
+        gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+        const loc = gl.getAttribLocation(prog, 'a'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+        const U = n => gl.getUniformLocation(prog, n);
+        const ripples = [];                                  // [x, y, start, strength, radius, duration]
+        const KINDS = { tap: [2.4, 70, 3.4], ambient: [1.6, 90, 4.6], soft: [0.9, 110, 5.5], wake: [0.4, 28, 1.5] };
+        let ready = false, drawing = false, lastStep = -1;
+
+        function draw(now) {
+          const dpr = Math.min(devicePixelRatio || 1, 2), w = Math.round(canvas.clientWidth * dpr), h = Math.round(canvas.clientHeight * dpr);
+          if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); }
+          const live = ripples.filter(r => now - r[2] < r[5]);
+          ripples.length = 0; ripples.push(...live);
+          const data = new Float32Array(MAX * 4), size = new Float32Array(MAX * 2);
+          live.slice(-MAX).forEach((r, i) => { data.set([r[0] * dpr, r[1] * dpr, r[2], r[3]], i * 4); size.set([r[4] * dpr, r[5]], i * 2); });
+          gl.uniform2f(U('res'), w, h); gl.uniform2f(U('imgSize'), img.naturalWidth, img.naturalHeight);
+          gl.uniform1f(U('now'), now); gl.uniform1f(U('dpr'), dpr);
+          gl.uniform4fv(U('rip'), data); gl.uniform2fv(U('ripSize'), size);
+          gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+          return live.length > 0;
+        }
+        function loop() {                                    // 20 held frames a second, like the drawn ripples
+          const now = performance.now() / 1000, step = Math.floor(now * 20);
+          if (step !== lastStep) { lastStep = step; if (!draw(step / 20)) { drawing = false; return; } }
+          requestAnimationFrame(loop);
+        }
+        function start() {
+          try {
+            gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+            [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(k => gl.texParameteri(gl.TEXTURE_2D, k, gl.CLAMP_TO_EDGE));
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+            if (gl.getError()) return;
+          } catch (e) { return; }                            // e.g. opened straight from disk: keep the plain picture
+          ready = true; canvas.hidden = false; img.style.visibility = 'hidden';
+          draw(performance.now() / 1000);
+          addEventListener('resize', () => draw(performance.now() / 1000));
+        }
+        img.complete && img.naturalWidth ? start() : img.addEventListener('load', start, { once: true });
+        return {
+          // kind: 'tap', 'ambient' (leaf landing), 'soft' (behind the duck) or 'wake' (the cursor trailing through)
+          add(x, y, kind) {
+            if (!ready) return false;
+            const [strength, radius, duration] = KINDS[kind] || KINDS.tap;
+            ripples.push([x, y, performance.now() / 1000, strength, radius, duration]);
+            waves.push({ x, y, t0: performance.now() / 1000, strength, radius, dur: duration });
+            if (!drawing) { drawing = true; requestAnimationFrame(loop); }
+            return true;
+          },
+        };
+      })();
+
       function ripple(x, y, ambient) {
+        if (water && water.add(x, y, ambient ? 'ambient' : 'tap')) return;      // the water itself ripples; the drawn rings are only a fallback
         const r = document.createElement('div');
         r.className = ambient ? 'ripple ambient' : 'ripple';
         r.style.left = x + 'px';
         r.style.top = y + 'px';
         const svg = document.createElementNS(NS, 'svg');
         svg.setAttribute('viewBox', '0 0 200 200');
-        // Three loose, broken rings like the hand-drawn ones around the duck
-        [0, 1, 2].forEach(i => {
-          const c = document.createElementNS(NS, 'circle');
-          c.setAttribute('cx', 100); c.setAttribute('cy', 100); c.setAttribute('r', 96 - i * 4);
-          c.setAttribute('pathLength', 100);
-          const gap = 8 + Math.random() * 14;
-          c.setAttribute('stroke-dasharray', `${30 + Math.random() * 25} ${gap} ${18 + Math.random() * 20} ${gap}`);
-          c.style.transform = `rotate(${Math.random() * 360}deg)`;
-          c.style.animationDelay = (i * 0.22) + 's';
-          c.classList.add(i === 1 ? 'shine' : 'ring');
-          svg.appendChild(c);
+        // Two rings of tapered brush arcs with a slight wobble, like the rings painted around the duck
+        [0, 1].forEach(i => {
+          const g = document.createElementNS(NS, 'g');
+          g.setAttribute('class', 'rg ' + (i ? 'slate' : 'blue'));
+          const rad = 92 - i * 9, w1 = Math.random() * 6, w2 = Math.random() * 6;
+          let at = Math.random() * Math.PI * 2;
+          const arcs = 2 + Math.round(Math.random());
+          for (let k = 0; k < arcs; k++) {
+            const len = (Math.PI * 2 / arcs) * (0.55 + Math.random() * 0.3);
+            g.appendChild(brushArc(rad, at, len, (i ? 2.4 : 3.2) * (0.8 + Math.random() * 0.4), w1, w2));
+            at += Math.PI * 2 / arcs + (Math.random() - 0.5) * 0.4;
+          }
+          svg.appendChild(g);
+          if (!reduce) heldFrames(g, ambient ? 4.6 : 3.4, i * 0.35);
         });
         r.appendChild(svg);
         layer.appendChild(r);
-        setTimeout(() => r.remove(), reduce ? 900 : ambient ? 4200 : 2600);
+        setTimeout(() => r.remove(), reduce ? 900 : ambient ? 5200 : 4000);
       }
 
-      // Where the duck sits on screen (the picture is cropped with object-fit: cover)
-      const art = document.querySelector('.hero-art');
-      const DUCK = { x: 0.47, y: 0.52 };                 // position of the duck in the original illustration
-      function duckPoint() {
-        const W = stage.clientWidth, H = stage.clientHeight;
-        const iw = art.naturalWidth || 2000, ih = art.naturalHeight || 1390;
-        const k = Math.max(W / iw, H / ih), dw = iw * k, dh = ih * k;
-        return { x: (W - dw) * 0.5 + DUCK.x * dw, y: (H - dh) * 0.52 + DUCK.y * dh };
+      // ---- The duck: bobs, breathes and paddles; makes snow angels while you hover (or tap) it ----
+      const duck = document.getElementById('duck');
+      const part = sel => duck.querySelector(sel);
+      const body = part('.body'), wingL = part('.wing-l'), wingR = part('.wing-r'), footL = part('.foot-l'), footR = part('.foot-r');
+      // Each wing's shoulder (pivot) and tip in the illustration's 2360×1640 canvas
+      const WINGS = [
+        { pivot: { x: 1055, y: 788 }, tip: { x: 940, y: 800 }, dir: 1 },
+        { pivot: { x: 1227, y: 901 }, tip: { x: 1205, y: 1035 }, dir: -1 },
+      ];
+      const pond = document.querySelector('.pond-stage');
+      function canvasPoint(pt) {
+        const box = stage.getBoundingClientRect(), s = pond.getBoundingClientRect();
+        return { x: s.left - box.left + pt.x / 2360 * s.width, y: s.top - box.top + pt.y / 1640 * s.height };
       }
 
-      // A gentle ripple drifts out from the duck every few seconds, while the pond is on screen
-      let timer = null;
-      const tick = () => { const p = duckPoint(); ripple(p.x, p.y, true); };
-      const startAmbient = () => { if (!timer) { tick(); timer = setInterval(tick, 2800); } };
-      const stopAmbient = () => { clearInterval(timer); timer = null; };
-      // Turned off for now (waiting on the layered duck). To bring it back, uncomment:
-      // if (!reduce) {
-      //   new IntersectionObserver(([e]) => (e.isIntersecting && !document.hidden) ? startAmbient() : stopAmbient(), { threshold: 0.2 }).observe(stage);
-      //   document.addEventListener('visibilitychange', () => document.hidden ? stopAmbient() : startAmbient());
-      // }
+      let hovering = false, angelUntil = 0;
+      function overDuck(e) {
+        const r = body.getBoundingClientRect(), pad = r.width * 0.12;
+        return e.clientX > r.left - pad && e.clientX < r.right + pad && e.clientY > r.top - pad && e.clientY < r.bottom + pad;
+      }
+      stage.addEventListener('pointermove', e => { if (e.pointerType === 'mouse') hovering = overDuck(e); });
+      stage.addEventListener('pointerleave', () => { hovering = false; });
+
+      let running = false, raf = 0;
+
+      // Every few seconds the duck's gentle paddling sends a faint ring out through the water behind him
+      let duckRippleTimer = null;
+      function duckRipple() {
+        if (water) { const p = canvasPoint({ x: 1120, y: 880 }); water.add(p.x, p.y, 'soft'); }
+        duckRippleTimer = setTimeout(duckRipple, 3500 + Math.random() * 2500);
+      }
+
+      // Now and then a willow leaf drops onto the pond, makes a little ripple, and drifts slowly across
+      const leafLayer = document.getElementById('leaves');
+      let leafTimer = null;
+      function dropLeaf(fromX, fromY) {
+        const W = layer.clientWidth, H = layer.clientHeight;
+        const x = fromX ?? W * (0.15 + Math.random() * 0.7), y = fromY ?? H * (0.12 + Math.random() * 0.3);
+        const dx = (Math.random() < 0.5 ? -1 : 1) * W * (0.12 + Math.random() * 0.12), dy = H * (0.25 + Math.random() * 0.2);
+        const spin = (Math.random() < 0.5 ? -1 : 1) * (40 + Math.random() * 60), turn = Math.random() * 360;
+        const leaf = document.createElement('img');
+        leaf.className = 'drift-leaf'; leaf.src = 'assets/hero/leaf.png'; leaf.alt = '';
+        leaf.style.width = Math.max(14, W * 0.028) + 'px';
+        // every leaf a slightly different green: some yellower, some deeper, some paler
+        leaf.style.setProperty('--tint', `hue-rotate(${(Math.random() * 34 - 18).toFixed(1)}deg) brightness(${(0.78 + Math.random() * 0.3).toFixed(2)}) saturate(${(0.8 + Math.random() * 0.5).toFixed(2)})`);
+        leafLayer.appendChild(leaf);
+        const dur = 22000 + Math.random() * 8000;
+        const at = (k, wob) => `translate(${x + dx * k + wob}px, ${y + dy * k}px) rotate(${turn + spin * k}deg)`;
+        const anim = leaf.animate([
+          { transform: at(0, 0) + ' scale(1.25)', opacity: 0 },
+          { transform: at(0.01, 0) + ' scale(1)', opacity: 1, offset: 0.04 },
+          { transform: at(0.3, W * 0.012), offset: 0.3 },
+          { transform: at(0.6, -W * 0.01), offset: 0.6 },
+          { transform: at(0.92, W * 0.006), opacity: 1, offset: 0.92 },
+          { transform: at(1, 0), opacity: 0 },
+        ], { duration: dur, easing: 'cubic-bezier(0.3, 0.2, 0.5, 1)', fill: 'forwards' });
+        setTimeout(() => ripple(x, y, true), dur * 0.03);   // touchdown
+        anim.onfinish = () => leaf.remove();
+      }
+      function leafLoop() { dropLeaf(); leafTimer = setTimeout(leafLoop, 16000 + Math.random() * 12000); }
+
+      // Fireflies: they flit away from the cursor, then drift slowly back to their spot once left alone
+      const flies = [...document.querySelectorAll('.fireflies span')].map(el => ({ el, bx: 0, by: 0, x: 0, y: 0, vx: 0, vy: 0, swirl: Math.random() < 0.5 ? -1 : 1 }));
+      let cursor = null, homesKnown = false;
+      function findHomes() {
+        const box = stage.getBoundingClientRect();
+        flies.forEach(f => { const r = f.el.getBoundingClientRect(); f.bx = r.left + r.width / 2 - box.left - f.x; f.by = r.top + r.height / 2 - box.top - f.y; });
+        homesKnown = true;
+      }
+      addEventListener('resize', () => { homesKnown = false; });
+      stage.addEventListener('pointermove', e => { const box = stage.getBoundingClientRect(); cursor = { x: e.clientX - box.left, y: e.clientY - box.top }; });
+      stage.addEventListener('pointerleave', () => { cursor = null; });
+      function moveFlies(dt) {
+        if (!cursor && flies.every(f => Math.abs(f.x) + Math.abs(f.y) + Math.abs(f.vx) + Math.abs(f.vy) < 0.05)) return;
+        if (!homesKnown) findHomes();
+        const R = stage.clientWidth * 0.12;
+        flies.forEach(f => {
+          let tx = 0, ty = 0;
+          if (cursor) {
+            const dx = f.bx - cursor.x, dy = f.by - cursor.y, d = Math.hypot(dx, dy) || 1;
+            if (d < R) {
+              const push = (1 - d / R) ** 1.5 * R * 0.9;
+              tx = dx / d * push - dy / d * push * 0.35 * f.swirl;     // away, with a little sideways flutter
+              ty = dy / d * push + dx / d * push * 0.35 * f.swirl;
+            }
+          }
+          const fleeing = Math.hypot(tx, ty) > 0.5, k = fleeing ? 14 : 2.2, c = fleeing ? 5 : 2.4;
+          f.vx += ((tx - f.x) * k - f.vx * c) * dt; f.vy += ((ty - f.y) * k - f.vy * c) * dt;
+          f.x += f.vx * dt; f.y += f.vy * dt;
+          f.el.style.translate = `${f.x.toFixed(2)}px ${f.y.toFixed(2)}px`;
+        });
+      }
+
+      // Branches sway gently, each at its own pace; now and then a breeze passes through from left to right
+      const SWAY = 3;                                      // overall strength of the sway
+      const branches = [...document.querySelectorAll('.branch')].map((el, i) => ({
+        el, amp: parseFloat(el.dataset.sway) * SWAY, period: 5.5 + i * 1.3, offset: i * 1.7,
+        lag: parseFloat(el.style.left) / 100 * 1.4,        // the breeze reaches branches further right a moment later
+        push: 0, spin: 0, drive: 0,                        // how far it's bent, how fast it's swinging, and the cursor's lingering nudge
+      }));
+      // Where each branch actually has leaves: a coarse map (one bit per 6px of the drawing), so the cursor only
+      // catches leaves, not the empty space around them. Built from the branch images; rebuild if they change.
+      const LEAF_MAPS = {
+        'willow-left-back': [64, 120, '//yAAAAAAAD//9AAAAAAAH//+AAAAAAAf//4wAAAAAD///ngAAAAAH//98AAAAAAB///wAAAAAAP//+AAAAAAA///xAAAAAAH///+AAAAAA////4AAAAAH////gAAAAAP///8AAAAAA////mAAAAAH////8AAAAAf////wAAAAA////+AAAAAH////jAAAAA/////+AAAAB/////4AAAAA/////AAAAAH////4AAAAA////+BgAAABv/////AAAAA/////8AAAAH/////wAAAA+////+AAAAB3////wAAAAD///f+OAAAA//////8AAAH///v//gAAAP//9//8gAAAf//v///AAAAf/+///8AAAA//////wAAAf/////+AAAD//////gAAAH///v/+GAAAP//g///8AAB///j///gAAD///P//8AAAH//7///gAAAD/+f//xwAAA//w////gAAH//j9//+AAA/3//P//wAAB8//w//+AAAAD//D//gAAAA//4P//8AAAP//B///4AAB//8P///AAAP//h///4AAAf/wD//ccAAAP/4Dn//4AAB//wA///AAAf/+AD//4AAD//wAf//AAAf//4B//4QAA///wP///gAP///B///+AB///4D///wAD///AH//+AADv/gAf/8PgAD//gAx///AAf//gAP//4AD///AA///AB///4AH//4AP//+AA//+AA///+AH//8AB///8Af///gH///gD////AP//8AH5//4AD/+AAAf7+AAP/8AAD/4AAB//+AAP/8AAP//8AB//8AH/+/gAP//+A///4AD///8B///gAf///gB///AA//z4AP//4AB//4AAf//AAAP/8AAf/wAAB//4AB//4AAf//+AP//wAH///8D//+AA////wf/9wAB///+B//4AAD///AD//4AAH//+AH//wAAP//wAH//AAAH/+AD//4AAB//4Af/8AAAf//AA//4AAD///wAn/8AAH///gH//4AAD//8A///AAAf//gB//4AAA//wAD//AAAA//AAf/4AAAP/+AD/+AAAB//wAH/8AAAD/gAAf/8AAAB8AAD//4AAAPgAAP//AAAAcAAAf/4AAAAAAAD//wAAAAAAAf/+AAAAAAAA//gAAAAAAAB//gAAAAAAAH//AAAAAAAA//8AAAAAAAB//gAAAAAAAD/8AAAAAAAA//wAAAAAAAH//gAAAAAAAf/8AAAAAAAA/wAAAAAAAAA+AAAAAAAAADwAAAAAAAA'],
+        'branch-right-top': [54, 62, 'AADw///3/AAD8f///+AAB///3/+AAB///v/8AMA/+/v/4AeAf//v/wAPwH//v3wAP4D///n4AP/APv/j4AH///P/j4AD///v/B4AB///v/A4AA///n/gQMAP//n/gAfAH//z7AAP/4P/x8AAH////w8AAD////wYAAB////wAAAA////wAAAAP///wAAAAAB/fwAAAAAD/f4AAAAAH+P8AAAAAP+H4AAAAAf/D8AAAHg//B+AAAP///g/AAAP///wOAAAH///wAAAAD///wAAAAA///wAAAAAf//wAAAA7///wAAAA////4AAAA////4AAAAf///8AAAAP9/P+AAAAAB/j/AAAAAD/wGAAAAAD/wAAAAAAH/4AAAAAAf/4AAAAAf//8AAAAA////AAAAA////gAAAAf///gAAAAH///gAAAAA/9/AAAAAD/+AAAAAAf//gAAAAA///wAAAAA/5/4AAAAAfh/+AAAAAAB//gAAAAAB//wAAAAAB/PgAAAAAA/AAAAAAAAfgAAAAAAAfgAAAAAAAPwAAAAAAAHgAAAAAA='],
+        'branch-right': [117, 107, 'AAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAAAAgHAAAAAAAAAAAAAAAAAOB4AAAAAAAAAAAAAAAABwPgAAAAAAAAAAAAEAAQOB8AAAAAAAAAAAAByAHB4PwgAAAAAAAAAAAO4A4PB/OAAAAAAAAAAAD3gHB8P94AAAAAAAAAAAf8A8P5/vAAAAAAAAAAgD/gHw/v94AAAAAAAAAOAf+A/H+//AAAAAAAAAB4D/8H8/3/8AAAAAAAAAPAP/wfz/f/gAAAAAAAAB8B//D/P5/+AAAAAAACAPwP/8f4/n/4AAAAAAA4A/B//x/j///AAAAAAAHgH+f//H+P//4AAAAAAAeAf///8f///+AAAAAAAD4D////g////wAAAABAAfwP///+////8AAAAAcAD/A/////////gAAAADgAP/H////////8AAAAAeAB/8f//////f/AAAAADwAH/w//////5/4AAAAAfAAf/D//+//+P/AAAAAB/gD/8H/////x+QAAAAAH/gP/4P/9//+PwAAAAAA//A////P///x8AAAAAAD/8D///j///8PgAAAABAP/wD//wf/3/h8AAAAAcA//gH/+H/8/4PAAAAADwD/+B//w//n+A8AAAAAPwP/4f/+P/4fgHgAAAAB/8//v//x//D8AYAAAAAH/5////+P/wfgAAAAAAA///////x/+B+AAAAAAAP//5///8H7wHwAAAAAAA///////w/OAcAAAAAQAD///7//+H54AAAAAAHAAf///f//g/GAAAAAAA8AB///7+/8DwAAAAAAAD4AD////n/gfAAAAAAAAf/4D///8/4B4AAAAAAAB//wA///n/AHAAAAAAAAH//wH//8fwAQAAAAAAAAf//h+//j/AAAAAAAAAAA////n/8P4AAAAAAAAAAD///4//g/AAAAAAAAAAAH///H/8H8AAAAAAAAAAAf//4//gfgAAAAAAAAAgAOP/n/4D8AAAAAAAAAPB//78//APwAAAAAAAAB////fj/4AeAAAAAAAAAH///7+f/AAgAAAAAAAAAf////5/4AAAAAAAAAAAH/////H/gAAAAAAAAAAA/////4f8AAAAAAAAAAAD///9/B/wAAAAAAAAAAAH////4H+AAAAAAAAAAAAf////Af4AAAAAAAAAAAAAP//4A/AAAAAAAAABgAAB8//gAwAAAAAAAAAeB/+fn/8AAAAAAAAAAAB////8//gAAAAAAAAAAAH////j/8AAAAAAAAAAAAf///+P/wAAAAAAAAAAAB////4/+AAAAAAAAAAAAD////j/4AAAAAAAAAAAAD/7z+H/gAAAAAAAAAAAAAf/f4P8AAAAAAAAAAAAAP/7/AfAAAAAAAAAAAAEP//v4AAAAAAAAAAAAAB///9/gAAAAAAAAAAAAAP////8AAAAAAAAAAAAAA/////wAAAAAAAAAAAAAD////+AAAAAAAAAAAAAA/////4AAAAAAAAAAAAAH//7//gAAAAAAAAAAAAAf8fP/+AAAAAAAAAAAAAA8/8//4AAAAAAAAAAAAAD//z/+AAAAAAAAAAAAAB///n/AAAAAAAAAAAAAw///+BAAAAAAAAAAAAAH///f4AAAAAAAAAAAAAA///7/AAAAAAAAAAAAAAD///P8AAAAAAAAAAAAAAP//4/wAAAAAAAAAAAAAAAH/j/AAAAAAAAAAAAAAAB//P+AAAAAAAAAAAAAAAf/+/4AAAAAAAAAAAAAAP//9/gAAAAAAAAAAAAAD////4AAAAAAAAAAAAAAP///wAAAAAAAAAAAAAAD//v+AAAAAAAAAAAAAAA//+/gAAAAAAAAAAAAAAD//8AAAAAAAAAAAAAAAAP//4AAAAAAAAAAAAAAAD///gAAAAAAAAAAAAAAAf+/+AAAAAAAAAAAAAAAB+H/+AAAAAAAAAAAAAAAAA//4AAAAAAAAAAAAAAAAH/+AAAAAAAAAAAAAAAAAfwAAAAAAAAAAAAAAAAAB+AAAAAAAAAAAAAAAAAAPwAAAAAAAAAAAAAAAAAA/AAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAA='],
+        'willow-left': [53, 73, '///AwAAAB//8DwAAAB////gAAAD///+AAAAH///4AAAAP///gAAAAP//8AAAAAf//gAAAAA//wAAAAAB+/wAAAAAH5/8D8AAAPj///8AAA+P///wAAB4f///AAADh///8AAAAH///gAAAAf/74AAAAA//4AAAAAD/f/gAAAAf+f/4AAAB/4///wAAH/D///wAAH8P///wAAAg////wAAAH////gAAAf///+AAAB////4AAAD////gAAAP///+AAAA////wAAAB//88AAAA///8IAAAD/////BgAD8/////gAAD/////AAAP/v//8AAB/////wAAH//+f+AAAH//8AAAAAAG/8AMAAAAD/8D8AAAAP///4AAAA////wAAAB////AAAAD///4AAAAP7//gAAAAfn///gAAH+f///gAAfw/v/+AAB/B/f/4AAB4D+//BwAAAP78H/wAAA/////AAAA////8AAAA5///wAAAAn///AAAAAP//4AAAAA//4ABgAAB//7//gAAP37///AAA/f///8AAA9////gAAAH///8AAAA////gAAAD////AAAAD4/P/AAAAAB+f/wAAAAH4f/wAAAAPwf/gAAAA/AH+AAAAD8AAgAAAAPwAAAAAAAOAAAAA=='],
+        'willow-centre': [35, 42, '////+B////4J////H/8f///3h////AH///8Af///wA////AB///4AH/+eAAP/+AAB////AH////AH///+AP///8A////4D/P/PgD4P+CAAgf+AAD//8AAH//8AAH//4AAH//wAAH//gAAH//gAMf//gA////gA////wA////wA//+/AAAP8AAAA/8AAAB/8AAAD/8AAAH/4AAAP/8AAAP38AAAfj8AAAfBwAAA+AAAAA8AAAAAwAAA=='],
+        'ivy': [53, 144, 'AP8P/AAAAAf//+GAAAD//58fgAAP//h9/gAA//+H//gAD//8f//AAH//5///AAH//3///AAH//////AAP//////AAf//////AY//9///8A///h///wB//+D///AD/74H//4AH+DgP//wAPwCAf//gAAAAB///AAAAAD//+AAAAAH//8AAAAAP/v4AAADx9/PwAAAf37/HgAAB//n+CAAAD//PeAfAAH//e8B/gAf/+88H/wB///99//wD///5///gP///x//+AP//3h//8AP/+PAf/8AH/8fA//4AP/4eB//wAf/g8D//gA/vB8D//AB+MD4B/+ABwADwB+AAAAAHgB4AAAAAPABgAAAAA+AAAAAAAB8AAAAAADH4AAAAAAfvwAAAAAD//gAAAAAP//gAAAAAf//gAAAAAf//AAAAAB///AAAAAH///AAAAAP//+AAAAA///4AAAAB///gAAAAD///AAAAAP//+AAAAAP//8AAAAAA//88AAAAB///8AAAAD/v/8AAAAH+//4AAAAP5//4AAAA/D//wAAAA4P//wAAAAAfv/gAAAAg/v+AAAAH3/PAAAAAf/+MAAAAB/++AAAAAH/98AAAAAf//8AAAAA///8AAAAA///8AAAAA////4AAAB/+f/4AAAD/49/4AAAH/z4/wAAAf/H4/wAAAeM/w/gAAAAH/g+AAAAAf/AAAAAAA//AAAAAAB/+AAAAAAH/8AAAAAAP/4AAAAAAf/4AAAAAAf/wAAAAAAf/zgAAAAAf//4AAAAAAf/4AAAAAA//4AAAAAB//wAAAAAD//AAAAAAH/+AAAAAAP/+AAAAAAf/8AAAAAD//4AAAAAP//gAAAAA/9gAAAAAB/4AAAAAAD/4AAAAAAH/4AAAAAAHvwAAAAAAAP/gAAAAAAf/gAAAAAA//AAAAAAD5/AAAAAAf/+AAAAAB//4AAAAAD/7AAAAAAH/wAAAAAAH/wAAAAAAP/gAAAAAAP/4AAAAAAf/4AAAAAAf/4AAAAAAf/4AAAAAAP/wAAAAAAf/AAAAAAA/+AAAAAAA/8AAAAAAB/wAAAAAADwAAAAAAAHgAAAAAAAfAAAAAAAA+AAAAAAAH8AAAAAAAf4AAAAAAB/8AAAAAAD/8AAAAAAH/4AAAAAAP/4AAAAAAP/wAAAAAAH/AAAAAAAH+AAAAAAAP8AAAAAAAfwAAAAAAB8AAAAAAA/wAAAAAAD/AAAAAAAH8AAAAAAAf4AAAAAAB/wAAAAAAB/AAAAAAAAcAA']
+      };
+      branches.forEach(b => {
+        const name = b.el.getAttribute('src').split('/').pop().replace('.webp', ''), m = LEAF_MAPS[name];
+        if (m) b.map = { w: m[0], h: m[1], bits: Uint8Array.from(atob(m[2]), ch => ch.charCodeAt(0)) };
+      });
+      function onLeaf(b, cx, cy) {                       // is this screen point on one of the branch's leaves?
+        const r = b.el.getBoundingClientRect(), m = b.map;
+        if (!m || cx < r.left || cx > r.right || cy < r.top || cy > r.bottom) return false;
+        const gx = Math.floor((cx - r.left) / r.width * m.w), gy = Math.floor((cy - r.top) / r.height * m.h), i = gy * m.w + gx;
+        return gx >= 0 && gy >= 0 && gx < m.w && gy < m.h && (m.bits[i >> 3] >> (7 - (i & 7))) & 1;
+      }
+      // Brushing through the leaves knocks them aside; they swing back and settle like real branches
+      let prevPointer = null, lastShake = 0;
+      stage.addEventListener('pointermove', e => {
+        const now = performance.now();
+        if (prevPointer && now > prevPointer.time) {
+          const dts = (now - prevPointer.time) / 1000, vx = (e.clientX - prevPointer.x) / dts, vy = (e.clientY - prevPointer.y) / dts;
+          branches.forEach(b => {
+            if (!onLeaf(b, e.clientX, e.clientY)) return;
+            const r = b.el.getBoundingClientRect(), o = getComputedStyle(b.el).transformOrigin.split(' ').map(parseFloat);
+            const px = r.left + o[0] * r.width / b.el.offsetWidth, py = r.top + o[1] * r.height / b.el.offsetHeight;
+            const rx = e.clientX - px, ry = e.clientY - py, rr = rx * rx + ry * ry || 1;
+            const kick = (rx * vy - ry * vx) / rr * 180 / Math.PI;   // how the cursor's motion would turn it about its stem
+            b.drive += Math.max(-1.5, Math.min(1.5, kick * 0.012));   // a gentle nudge that builds up as you keep brushing
+            // a hard brush sometimes shakes a leaf loose
+            if (Math.abs(kick) > 120 && now - lastShake > 4000 && Math.random() < 0.35) {
+              lastShake = now; const box = layer.getBoundingClientRect(); dropLeaf(e.clientX - box.left, e.clientY - box.top);
+            }
+          });
+          // brushing past a floating plant tips it the way you're moving, then it rocks back
+          floaters.forEach(f => {
+            const r = f.el.getBoundingClientRect(), pad = Math.max(8, r.width * 0.15);
+            if (e.clientX < r.left - pad || e.clientX > r.right + pad || e.clientY < r.top - pad || e.clientY > r.bottom + pad) return;
+            f.drive += Math.max(-0.9, Math.min(0.9, vx * 0.0014));
+          });
+        }
+        prevPointer = { x: e.clientX, y: e.clientY, time: now };
+      });
+      stage.addEventListener('pointerleave', () => { prevPointer = null; });
+      function swingBranches(dt) {
+        branches.forEach(b => {
+          b.drive *= Math.exp(-dt / 0.6);                  // the nudge fades, so the branch drifts back on its own
+          const target = 6 * Math.tanh(b.drive / 6);       // leans further the more you brush, but eases off instead of hitting a wall
+          b.spin += (5 * (target - b.push) - 1.2 * b.spin) * dt;   // a slow, loose spring: eases in, overshoots, settles
+          b.push += b.spin * dt;
+        });
+      }
+      // Floating plants: each rocks gently on its own; a tap, or a ripple rolling under it, makes it rock a little more
+      const floaters = [...document.querySelectorAll('.floater, .plants')].map((el, i) => ({
+        el, tilt: 0, drive: 0, tiltV: 0, rockAt: 0, rockBy: 0, phase: i * 2.1, period: 3.6 + (i % 5) * 0.45, felt: new Set(),
+      }));
+      // A nudge: it rocks right, left and settles
+      function nudge(f, amount) {
+        f.rockAt = performance.now() / 1000 + 0.05;
+        f.rockBy = (Math.random() < 0.5 ? -1 : 1) * 11 * amount;
+      }
+      function hitFloater(e) {
+        return floaters.find(f => {
+          const r = f.el.getBoundingClientRect(), ix = r.width * 0.1, iy = r.height * 0.1;
+          return e.clientX > r.left + ix && e.clientX < r.right - ix && e.clientY > r.top + iy && e.clientY < r.bottom - iy;
+        });
+      }
+      function moveFloaters(dt) {
+        const now = performance.now() / 1000, box = stage.getBoundingClientRect();
+        for (let i = waves.length - 1; i >= 0; i--) if (now - waves[i].t0 > waves[i].dur) waves.splice(i, 1);
+        floaters.forEach(f => {
+          if (waves.length) {
+            const r = f.el.getBoundingClientRect(), cx = r.left + r.width / 2 - box.left, cy = r.top + r.height / 2 - box.top;
+            waves.forEach(w => {
+              const u = (now - w.t0) / w.dur, ring = w.radius * (1 - Math.pow(1 - u, 2.6));
+              if (!f.felt.has(w) && Math.abs(Math.hypot(cx - w.x, cy - w.y) - ring) < Math.max(10, r.width * 0.3)) {
+                f.felt.add(w); nudge(f, 0.22 * w.strength * (1 - u));      // the ring lifts it as it passes
+              }
+            });
+          }
+          if (f.felt.size > 40) f.felt.clear();
+          if (f.rockAt && now >= f.rockAt) { f.tiltV += f.rockBy; f.rockAt = 0; }
+          f.drive *= Math.exp(-dt / 0.5);                    // the brush's push fades, and it rocks back
+          const lean = 3.5 * Math.tanh(f.drive / 3.5);
+          f.tiltV += (14 * (lean - f.tilt) - 1.7 * f.tiltV) * dt; f.tilt += f.tiltV * dt;   // a loose rock: right, left, back
+        });
+      }
+      function drawFloaters() {
+        floaters.forEach(f => {
+          f.el.style.transform = `rotate(${(0.9 * Math.sin(2 * Math.PI * t / f.period + f.phase) + f.tilt).toFixed(3)}deg)`;
+        });
+      }
+      let gustAt = 4;
+      function breeze(time) {                              // a soft swell that rises and settles over ~3.5s
+        const k = (time - gustAt) / 3.5;
+        return k > 0 && k < 1 ? Math.sin(Math.PI * k) ** 2 : 0;
+      }
+      function swayBranches() {
+        if (t > gustAt + 6) gustAt = t + 6 + Math.random() * 8;
+        branches.forEach(b => {
+          const a = b.amp * (0.55 * Math.sin(2 * Math.PI * t / b.period + b.offset) + 0.25 * Math.sin(2 * Math.PI * t / (b.period * 0.47) + b.offset * 2) - 1.4 * breeze(t - b.lag));
+          b.el.style.transform = `rotate(${(a + b.push).toFixed(3)}deg)`;
+        });
+        drawFloaters();
+      }
+
+      // Hand-drawn timing: wings and feet on 12 frames a second, the floating and breathing on 8
+      const LIMB_FPS = 12, FLOAT_FPS = 8;
+      let last = 0, t = 0, phase = 0, prevPhase = 0, env = 0, pace = 0, limbStep = -1, floatStep = -1;
+      const ease = x => x * x * (3 - 2 * x);
+      function frame(now) {
+        const dt = Math.min(0.05, (now - (last || now)) / 1000); last = now; t += dt;
+        const want = (hovering || now < angelUntil) ? 1 : 0;
+        env += (want - env) * Math.min(1, dt * (want ? 2.4 : 1.4));       // ease into and out of the snow angel
+        // One snow-angel stroke every ~1.7s: a small tuck, a slow sweep out, a held moment, then back
+        if (env > 0.01) phase = (phase + dt / 1.7) % 1; else phase = 0;
+        const sweep = ease(Math.min(1, Math.max(0, (phase - 0.12) / 0.4))) - ease(Math.min(1, Math.max(0, (phase - 0.62) / 0.38)));
+        const tuck = phase < 0.12 ? Math.sin(phase / 0.12 * Math.PI) : 0;
+        const stroke = env * (sweep * 26 - tuck * 4);
+        // The water answers mid-stroke, right where each wingtip is pushing through it (out, then back)
+        const SPLASH = [0.3, 0.8];
+        SPLASH.forEach(at => {
+          if (prevPhase < at && phase >= at && env > 0.5) WINGS.forEach(w => {
+            const a = w.dir * stroke * Math.PI / 180, dx = w.tip.x - w.pivot.x, dy = w.tip.y - w.pivot.y;
+            const q = canvasPoint({ x: w.pivot.x + dx * Math.cos(a) - dy * Math.sin(a), y: w.pivot.y + dx * Math.sin(a) + dy * Math.cos(a) });
+            ripple(q.x, q.y);
+          });
+        });
+        prevPhase = phase;
+        moveFlies(dt);
+        swingBranches(dt);
+        moveFloaters(dt);
+        raf = requestAnimationFrame(frame);
+        pace += dt * 2 * Math.PI / (3.6 - env * 1.0);
+        // Each part holds its drawing until its next frame is due
+        const fStep = Math.floor(t * FLOAT_FPS);
+        if (fStep !== floatStep) {
+          floatStep = fStep;
+          const u = stage.clientWidth / 1000;
+          const bob = 2.2 * u * Math.sin(2 * Math.PI * t / 4.6) + env * sweep * 1.5 * u;
+          const tilt = 1.1 * Math.sin(2 * Math.PI * t / 7.3 + 1);
+          const breathe = 1 + 0.009 * Math.sin(2 * Math.PI * t / 3.4) + env * sweep * 0.012;
+          duck.style.transform = `translateY(${bob}px) rotate(${tilt}deg) scale(${breathe})`;
+        }
+        const step = Math.floor(t * LIMB_FPS);
+        if (step === limbStep) return;
+        limbStep = step;
+        swayBranches();
+        // Wings rustle and feet paddle out of step
+        const rustle = 1.6 * Math.sin(t * 1.3) + 0.8 * Math.sin(t * 2.9 + 1);
+        wingL.style.transform = `rotate(${stroke + rustle}deg)`;
+        wingR.style.transform = `rotate(${-stroke - rustle * 0.8}deg)`;
+        // Feet: a slow, soft paddle (the phase builds up gradually, so speeding up never makes them jump)
+        footL.style.transform = `rotate(${2.6 * Math.sin(pace)}deg)`;
+        footR.style.transform = `rotate(${2.2 * Math.sin(pace + Math.PI)}deg)`;
+      }
+
+      function start() {
+        if (running || reduce) return;
+        running = true; last = 0; raf = requestAnimationFrame(frame);
+        leafTimer = setTimeout(leafLoop, 2500);
+        duckRippleTimer = setTimeout(duckRipple, 1200);
+      }
+      function stop() { running = false; cancelAnimationFrame(raf); clearTimeout(leafTimer); clearTimeout(duckRippleTimer); }
+      let onScreen = false;
+      new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; (onScreen && !document.hidden) ? start() : stop(); }, { threshold: 0.2 }).observe(stage);
+      document.addEventListener('visibilitychange', () => (document.hidden || !onScreen) ? stop() : start());
+
+      // Trailing the cursor through the water leaves a soft wake of tiny ripples
+      let wakeAt = null;
+      stage.addEventListener('pointermove', e => {
+        if (e.target.closest('.lamp') || overDuck(e)) { wakeAt = null; return; }
+        const box = stage.getBoundingClientRect(), x = e.clientX - box.left, y = e.clientY - box.top;
+        if (!wakeAt) { wakeAt = { x, y }; return; }
+        if (Math.hypot(x - wakeAt.x, y - wakeAt.y) < 26) return;
+        wakeAt = { x, y };
+        if (water) water.add(x, y, 'wake');
+      });
+      stage.addEventListener('pointerleave', () => { wakeAt = null; });
 
       stage.addEventListener('pointerdown', e => {
         if (e.target.closest('.lamp')) return;          // the lamp keeps its own job
+        if (overDuck(e)) angelUntil = performance.now() + 3600;   // tap the duck: a few snow angels
+        const f = hitFloater(e); if (f) nudge(f, 1);    // tap a plant: it dips under and bobs back up
         const box = stage.getBoundingClientRect();
         ripple(e.clientX - box.left, e.clientY - box.top);
       });

@@ -11,3 +11,6 @@
 !/assets/
 
 .DS_Store
+
+# Raw Procreate layer exports for the home pond (the site uses the cut-down pieces)
+/assets/hero/layers/
